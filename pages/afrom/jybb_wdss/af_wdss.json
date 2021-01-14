@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText":"电商订单违规操作考核网点申诉",
+  "usingComponents": { 
+    "mp-toptips": "/Componet/toptips/toptips"  
+  }
+}

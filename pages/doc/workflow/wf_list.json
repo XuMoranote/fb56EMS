@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "流程处理",
+  "usingComponents": {  
+    "datepicker":  "/Componet/datePicker/datepicker",
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

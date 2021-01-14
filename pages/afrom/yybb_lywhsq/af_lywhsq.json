@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "路由维护申请",
+  "usingComponents": {
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

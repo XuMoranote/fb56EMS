@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText":"提现申请单",
+  "usingComponents": {
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

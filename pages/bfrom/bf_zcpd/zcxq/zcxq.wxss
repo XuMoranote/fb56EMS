@@ -1,0 +1,11 @@
+/* pages/bfrom/bf_zcpd/zcxq/zcxq.wxss */
+@import '/pages/bfrom/bf_zcpd/index.wxss';
+
+.font-value{
+  color: black;
+  opacity:1;
+  /* background:transparent; */
+  font-weight: bold;
+  -webkit-text-fill-color: black;
+  display: block;
+}

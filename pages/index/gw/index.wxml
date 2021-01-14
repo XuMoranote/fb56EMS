@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<import src="/Template/grid/index.wxml" />
+<!-- 顶部图片轮播 -->
+<view class="page">
+	<view class="page-section">
+		<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+			<block wx:for="{{imgUrls}}" wx:key="*this">
+				<swiper-item>
+					<image src="{{item}}" style=" width: 100%;height: 100%;  " mode='scaleToFill' />
+				</swiper-item>
+			</block>
+		</swiper>
+	</view>
+	<view class="page-section">
+		<template is="gridItem" data="{{serversData}}"></template>
+	</view>
+</view>

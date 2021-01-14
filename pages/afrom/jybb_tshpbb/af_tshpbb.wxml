@@ -1,0 +1,201 @@
+<!--pages/afrom/jybb_tshpbb/af_tshpbb.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">申请人</view>
+			<view class="row-extra">{{formData.UserName}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">工号</view>
+			<view class="row-extra">{{formData.UserCode}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部</view>
+			<view class="row-extra">{{formData.szfb}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部编码</view>
+			<view class="row-extra">{{formData.szfbbm}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网点名称:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_wdmc" style="width:100%" maxlength="100" placeholder="请输入网点名称" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网点代码:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_wddm" style="width:100%" maxlength="100" placeholder="请输入网点代码" />
+			</view>
+		</view>
+  </view>
+  <!-- 运输开始时间 -->
+  <view class="page-section">
+		<datepicker dateType='date'  bind:bindMultiPickerChange="bindPickerChange_yskssj" bind:bindCancel="bindCancel">
+			<view slot='row-content'>
+				<view class="row">
+					<view class="row-title">运输开始时间:<text style="color:red">*</text></view>
+					<view class="row-extra">{{formData.yskssj}}</view>
+					<image class="row-arrow" src="/utils/icon/image/arrowright.png" />
+				</view>
+			</view>
+		</datepicker>
+	</view>
+  <!-- 运输结束时间 -->
+  <view class="page-section">
+		<datepicker dateType='date'  bind:bindMultiPickerChange="bindPickerChange_ysjssj" bind:bindCancel="bindCancel">
+			<view slot='row-content'>
+				<view class="row">
+					<view class="row-title">运输结束时间:<text style="color:red">*</text></view>
+					<view class="row-extra">{{formData.ysjssj}}</view>
+					<image class="row-arrow" src="/utils/icon/image/arrowright.png" />
+				</view>
+			</view>
+		</datepicker>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">客户名称:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_khmc" style="width:100%" maxlength="100" placeholder="请输入客户名称" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">联系方式:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_lxfs" style="width:100%" maxlength="100" placeholder="请输入联系方式" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">货物名称:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_hwmc" style="width:100%" maxlength="100" placeholder="请输入货物名称" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">货物类型:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_hwlx" style="width:100%" maxlength="100" placeholder="请输入货物类型" />
+			</view>
+		</view>
+  </view>
+  <view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">月均货量:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_yjhl" style="width:100%" maxlength="100" placeholder="请输入月均货量" />
+			</view>
+		</view>
+  </view>
+  <view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">产品包装:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_cpbz" style="width:100%" maxlength="100" placeholder="请输入产品包装" />
+			</view>
+		</view>
+  </view>
+  <view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">货物流向:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_hwlx2" style="width:100%" maxlength="100" placeholder="请输入货物流向" />
+			</view>
+		</view>
+  </view>
+  <view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">货物危害:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_hwwh" style="width:100%" maxlength="100" placeholder="请输入货物危害" />
+			</view>
+		</view>
+  </view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">单件尺寸:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_djcc" style="width:100%" maxlength="100" placeholder="请输入单件尺寸" />
+			</view>
+		</view>
+  </view>
+  <view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">单件重量:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_djzl" style="width:100%" maxlength="100" placeholder="请输入单件重量" />
+			</view>
+		</view>
+  </view>
+  <view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">十万件破损率承诺值:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_pslcnz" style="width:100%" maxlength="100" placeholder="请输入十万件破损率承诺值" />
+			</view>
+		</view>
+  </view>
+  <view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">特殊货物保证金<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input type='digit' bindinput="input_tshwbzj" value="{{formData.tshwbzj}}" adjust-position="true" style="width:100%" maxlength="20" placeholder="请输入特殊货物保证金" />
+			</view>
+		</view>
+	</view>
+  <view class="page-section">
+		<picker bindchange="bindPickerChange_gjspcycl" value="{{gjspcycl_index}}" range="{{gjspcycl_array}}">
+			<view class="row">
+				<view class="row-title">是否有国家审批承运材料:<text style="color:red">*</text></view>
+				<view class="row-extra">{{gjspcycl_array[gjspcycl_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+	<view class="page-section">
+		<view class="form-row-label" style="padding: 0 30rpx;">申请原因<text style="color:red">*</text></view>
+		<view class="page-section-demo">
+			<textarea bindinput="input_Reason" auto-height placeholder="请输入申请原因" maxlength="500" />
+			</view>
+  </view> 
+  <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">附件<text style="color:red">*</text></view>
+        <view class="form-row-content">
+          <view class="page-section-btns">
+            <view bindtap="chooseImage">选择附件</view>
+            <view bindtap="onClearAttachTap">清除附件</view>
+          </view>
+        </view>
+      </view>
+      <view class="form-row" wx:for="{{formData.fileAttach}}" wx:key="key" >
+        <view class="form-row-label"></view>
+        <view class="form-row-content">      
+            <text>{{item.fileName}}</text>
+        </view>
+      </view>   
+    </view>
+ <button bindtap="onSubmit"
+   style="background:#2F7DCD;color: #fff;width:100%;line-height:150rpx;height:150rpx;text-align:center;" >提交特殊货品报备</button>
+</view>
+

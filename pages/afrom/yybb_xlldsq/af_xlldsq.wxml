@@ -1,0 +1,91 @@
+<!--pages/afrom/yybb_xlldsq/af_xlldsq.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">申请人</view>
+			<view class="row-extra">{{formData.UserName}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">工号</view>
+			<view class="row-extra">{{formData.UserCode}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部</view>
+			<view class="row-extra">{{formData.szfb}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部编码</view>
+			<view class="row-extra">{{formData.szfbbm}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">线路名称:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_xlmc" style="width:100%" maxlength="100" placeholder="请输入线路名称" />
+			</view>
+		</view>
+  </view>
+  <view class="page-section">
+		<picker bindchange="bindPickerChange_SFSheng" value="{{SFSheng_index}}" range="{{SFSheng_array_select}}">
+			<view class="row">
+				<view class="row-title">始发省区<text style="color:red">*</text></view>
+				<view class="row-extra">{{SFSheng_array_select[SFSheng_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+	<view class="page-section">
+		<picker bindchange="bindPickerChange_sheng" value="{{sheng_index}}" range="{{sheng_array_select}}">
+			<view class="row">
+				<view class="row-title">目的省区<text style="color:red">*</text></view>
+				<view class="row-extra">{{sheng_array_select[sheng_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+  </view>
+  <view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">申请类型：<text>开通</text></view>
+		</view>
+  </view>
+	<view class="page-section">
+		<view class="form-row-label" style="padding: 0 30rpx;">需求分析<text style="color:red">*</text></view>
+		<view class="page-section-demo">
+			<textarea bindinput="input_Reason" auto-height placeholder="请把字数控制在200字以内" maxlength="200" />
+			</view>
+  </view>
+  <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">附件<text style="color:red">*</text></view>
+        <view class="form-row-content">
+          <view class="page-section-btns">
+            <view bindtap="chooseImage">选择附件</view>
+            <view bindtap="onClearAttachTap">清除附件</view>
+          </view>
+        </view>
+      </view>
+      <view class="form-row" wx:for="{{formData.fileAttach}}" wx:key="key" >
+        <view class="form-row-label"></view>
+        <view class="form-row-content">      
+            <text>{{item.fileName}}</text>
+        </view>
+      </view>   
+	</view>
+	<view class="page-section">
+		<view class="form-row-label" style="padding: 0 30rpx;">附件说明<text style="color:red">*</text></view>
+		<view class="page-section-demo">
+			<textarea bindinput="input_fjsm" auto-height placeholder="请把字数控制在200字以内" maxlength="200" />
+			</view>
+  </view>
+ <button bindtap="onSubmit"
+   style="background:#2F7DCD;color: #fff;width:100%;line-height:150rpx;height:150rpx;text-align:center;" >提交线路落地申请</button>
+</view>

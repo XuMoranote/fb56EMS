@@ -1,0 +1,14 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<import src="/Template/list/index" />
+<view class="page">
+  <view class="page-section">
+    <button style="background:#2F7DCD;color: #fff;width:100%;line-height:100rpx;height:100rpx;text-align:center;"
+      bindtap="handleBeginScan">资产正常扫码盘点</button>
+  </view>
+  <view class="page-section">
+    <view>
+      <template is="List" data="{{...listData}}" />
+    </view>
+  </view>
+</view>

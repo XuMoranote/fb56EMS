@@ -1,0 +1,63 @@
+<!--pages/doc/gw_transfer/gw_tview/gw_transfer.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<import src="/Template/items/index.wxml" />
+<view class="page">
+	<view class="page-section">
+		<view class="form-row" style=" width: 120rpx; text-align: center">
+			<view class="form-row-label">正文<text style="color:red">*</text></view>
+		</view>
+		<view class="form-row-content" decode="{{true}}">
+			<textarea style="min-height:80rpx;font-size:34rpx;position:relative; left:120rpx; top:-60rpx;width:550rpx;" name="content" auto-height placeholder="请输入正文" maxlength="800" bindinput="SetContentValue"></textarea>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">附件</view>
+			<view class="form-row-content">
+				<view class="page-section-btns">
+					<view bindtap='upload'>选择附件</view>
+					<view bindtap='Remove'>清除附件</view>
+				</view>
+			</view>
+		</view>
+		<view class="form-row" wx:for="{{fileAttach}}" wx:key="Key">
+			<view class="form-row-label"></view>
+			<view class="form-row-content">
+				<text>{{item.fileName}}</text>
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view>
+			<view class="form-row" style=" width: 140rpx; text-align: center">
+				<view class="form-row-label">审批人</view>
+			</view>
+			<view>
+				<textarea name="tranferPersons" auto-height disabled maxlength="-1" style="min-height:80rpx;font-size:34rpx;position:relative; left:125rpx; top:-60rpx;width:560rpx;" value="{{tranferPersons}}"></textarea>
+			</view>
+		</view>
+		<view>
+			<view class="form-row">
+				<view class="form-row-label page-section-btns">
+					<view bindtap='CleaerScanSpUser'>清除</view>
+				</view>
+				<view class="form-row-content">
+					<input style="width:420rpx" maxlength="20" placeholder="请输入姓名检索" value='{{spUser}}' bindinput="getSpUserValue" bindconfirm="scanSpUser" />
+				</view>
+				<icon style="display: flex;align-items: center;" size='18' type='search' bindtap='scanSpUser'></icon>
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view>
+			<view class="form-row" wx:for='{{userArraylist}}' wx:key="key">
+				<view class="form-row-content" data-idx='{{index}}' value='{{inputVal[index]}}' bindinput='getInputVal'>
+					<text bindtap='delSPUser' data-set='{{item}}' data-idx='{{index}}'> {{inputVal[index]}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<text decode="{{true}}" style="padding-top:12rpx;padding-bottom:12rpx;">&ensp;\n&ensp;\n\n\n&ensp;&ensp;\n&ensp;</text>
+	<view class="btnSave" bindtap="SaveThis">保存</view>
+</view>

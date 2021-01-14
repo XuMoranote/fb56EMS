@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "资产盘点",
+  "usingComponents": { 
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#353535",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "设置手势密码",
+  "backgroundColor": "#efeff4",
+  "backgroundTextStyle": "light",
+  "usingComponents": {}
+}

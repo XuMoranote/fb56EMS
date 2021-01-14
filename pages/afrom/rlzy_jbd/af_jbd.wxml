@@ -1,0 +1,118 @@
+<!--pages/afrom/rlzy_jbd/af_jbd.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">申请人</view>
+			<view class="row-extra">{{formData.UserName}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">工号</view>
+			<view class="row-extra">{{formData.UserCode}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部</view>
+			<view class="row-extra">{{formData.szfb}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部编码</view>
+			<view class="row-extra">{{formData.szfbbm}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<datepicker id="date-time-picker" bind:bindMultiPickerChange="startDatePicker" bind:bindCancel="bindCancel">
+			<view slot='row-content'>
+				<view class="row">
+					<view class="row-title">开始时间<text style="color:red">*</text></view>
+					<view class="row-extra">{{formData.startDate}}</view>
+					<image class="row-arrow" src="/utils/icon/image/arrowright.png" />
+				</view>
+			</view>
+		</datepicker>
+	</view>
+	<view class="page-section">
+		<datepicker bind:bindMultiPickerChange="endDatePicker" bind:bindCancel="bindCancel">
+			<view slot='row-content'>
+				<view class="row">
+					<view class="row-title">结束时间<text style="color:red">*</text></view>
+					<view class="row-extra">{{formData.endDate}}</view>
+					<image class="row-arrow" src="/utils/icon/image/arrowright.png" />
+				</view>
+			</view>
+		</datepicker>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">加班天数<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input type="digit" value="{{input_overTimeDay}}" style="width:100%" bindinput="input_overTimeDay" maxlength="100" placeholder="请输入加班天数" />
+			</view>
+			<!-- <icon style="display: flex;align-items: center;" size='18' type='success' bindtap='addjbrTabelContent'></icon> -->
+		</view>
+	</view>
+	<view class="page-section">
+		<picker bindchange="bindPickerChange_jblx" value="{{jblx_index}}" range="{{jblx_array}}">
+			<view class="row">
+				<view class="row-title">加班类型<text style="color:red">*</text></view>
+				<view class="row-extra">{{jblx_array[jblx_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+	<view class="page-section">
+		<view class="form-row-label" style="padding: 0 30rpx;">申请原因<text style="color:red">*</text></view>
+		<view class="page-section-demo">
+			<textarea bindinput="input_Reason" auto-height placeholder="申请原因" maxlength="500" />
+			</view>
+  </view>
+	<view class="page-section">
+   	<view class="form-row">
+			<view class="form-row-label">加班人员<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input style="width:70%；border-bottom:1px solid #ddd;" bindinput="input_user" bindconfirm="searchUser" value="{{input_user}}" maxlength="100" placeholder="检索工号/姓名" />
+			</view>
+			<icon style="display: flex;align-items: center;" size='18' type='search' bindtap='searchUser'></icon>
+		</view>
+		<view class="form-row" wx:for='{{userArraylist}}' wx:key="key">
+			<view class="form-row-content" data-idx='{{index}}' value='{{inputVal[index]}}'>
+				<scroll-view scroll-x style=" display: flex; white-space: nowrap;">
+					<view class="input font-value" style="width: 200rpx;display: inline-block; " bindtap='delSPUser' data-set='{{item}}' data-idx='{{index}}'>
+						{{inputVal[index]}}
+					</view>
+				</scroll-view>
+			</view>
+		</view>
+		<scroll-view scroll-x style="width: 100%; display: flex; white-space: nowrap;">
+		<view style='font-size: 32rpx;width:1500rpx'>
+		 <etable config="{{jbrTabel}}" bind:myget='deleteRowjbr'/>
+		</view>
+		</scroll-view>
+
+  </view>
+  <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">附件<text style="color:red">*</text></view>
+        <view class="form-row-content">
+          <view class="page-section-btns">
+            <view bindtap="chooseImage">选择附件</view>
+            <view bindtap="onClearAttachTap">清除附件</view>
+          </view>
+        </view>
+      </view>
+      <view class="form-row" wx:for="{{formData.fileAttach}}" wx:key="key" >
+        <view class="form-row-label"></view>
+        <view class="form-row-content">      
+            <text>{{item.fileName}}</text>
+        </view>
+      </view>   
+    </view>
+ <button bindtap="onSubmit"
+   style="background:#2F7DCD;color: #fff;width:100%;line-height:150rpx;height:150rpx;text-align:center;" >提交加班申请</button>
+</view>

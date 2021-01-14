@@ -1,0 +1,26 @@
+<!--pages/index/wf/yybb/dh_yybb.wxml-->
+<view class="page">
+	<view wx:for="{{serversData}}" wx:key="key">
+		<button hidden="{{item.disabled}}" class='btn1' data-path='{{item.url}}' style="width:99%" bindtap="bindNavigator">
+			<image class='btnImg' src='{{item.icon}}'></image>
+			<view>{{item.name}}</view>
+		</button>
+	</view>
+
+  <!-- <button class='btn1' style="width:99%" bindtap="xlxqsq">
+    <image class='btnImg' src='/utils/icon/image/components.png'></image>
+    <view>线路需求申请</view>
+  </button>
+  <button class='btn1' style="width:99%" bindtap="xlldsq">
+    <image class='btnImg' src='/utils/icon/image/components.png'></image>
+    <view>线路落地申请</view>
+  </button>
+  <button class='btn1' style="width:99%" bindtap="lywhsq">
+    <image class='btnImg' src='/utils/icon/image/components.png'></image>
+    <view>路由维护申请</view>
+  </button>
+  <button class='btn1' style="width:99%" bindtap="xlftblwhsq">
+    <image class='btnImg' src='/utils/icon/image/components.png'></image>
+    <view>线路分摊比例维护申请</view>
+  </button> -->
+</view>

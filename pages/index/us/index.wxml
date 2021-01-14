@@ -1,0 +1,41 @@
+<!--pages/index/us/index.wxml width:210rpx;height:210rpx;border:1rpx solid #ddd;border-radius: 50%;margin-top:25rpx;-->
+<import src="/Template/list/index.wxml" />
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<view class="page-section">
+		<view class="personalMe">
+			<view>
+				<image src="/utils/icon/logo.png" mode="scaleToFill"
+					style="width:700rpx;height:175rpx;border:0rpx solid #ddd;border-radius: 1%;margin-top:25rpx;" />
+			</view>
+			<view class="personalInfo">
+				<text bindtap="updatemManager">Test版本号:V1.0.59</text>
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<template is="List" data="{{...personalList}}" />
+	</view>
+	<view class="page-section">
+		<!-- objectArray[arrIndex].JobCode -->
+		<picker bindchange="bindObjPickerChange" value="{{arrIndex}}" range="{{objectArray}}" range-key="JobName">
+			<view style="display: flex;align-items: center;min-height: 88rpx;padding-left: 20rpx">
+				<image style="width:55rpx;height:55rpx;margin-right:18rpx;" src="/utils/icon/image/timeoff.png" />
+				<text style="flex:1;font-size:.98rem;line-height:1.5;width:auto; padding-top:.14rem;padding-bottom:.14rem;">切换职位</text>
+				<view class="row-extra">{{objectArray[arrIndex].JobName}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+	<view class="page-section">
+		<view bindtap="GoSetPage" style="display: flex;align-items: center;min-height: 88rpx;padding-left: 20rpx">
+			<image style="width:66rpx;height:66rpx;margin-right:10rpx;" src="/utils/icon/image/icon_component.png"
+				mode="scaleToFill" />
+			<text
+				style="flex:1;font-size:.98rem;line-height:1.5;width: auto; padding-top: .14rem;padding-bottom: .14rem;">设置</text>
+			<view>
+			</view>
+		</view>
+	</view>
+</view>

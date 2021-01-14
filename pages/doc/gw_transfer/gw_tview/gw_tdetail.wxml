@@ -1,0 +1,71 @@
+<!--pages/doc/gw_transfer/gw_tview/gw_tdetail.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<import src="/Template/collapse/index.wxml" />
+<view class="page">
+	<view class="page-section">
+		<view class="title">上报信息</view>
+	</view>
+	<view class="page-section">
+		<view>
+			<label>
+				<text class="fontstyle">上报单位：</text>
+				<text class="fontstyleC">{{docinfoData.OperCompanyName}}</text>
+			</label>
+		</view>
+		<view>
+			<label>
+				<text class="fontstyle">上报职位：</text>
+				<text class="fontstyleC">{{docinfoData.JobName}}</text>
+			</label>
+		</view>
+		<view>
+			<label>
+				<text class="fontstyle">上报时间：</text>
+				<text class="fontstyleC">{{docinfoData.DocumentTime}}</text>
+			</label>
+		</view>
+		<view>
+			<label>
+				<text class="fontstyle">上报人：</text>
+				<text class="fontstyleC" >{{docinfoData.ReporterName}}</text>
+			</label>
+		</view>
+		<view>
+			<label>
+				<text class="fontstyle">标</text><text class="fontstyle" style="margin-left:36rpx;">题：</text>
+				<text class="fontstyleC">{{docinfoData.DocumentTitle}}</text>
+			</label>
+		</view>
+		<view>
+			<label>
+				<text class="fontstyle">正</text><text class="fontstyle" style="margin-left:36rpx;">文：</text>
+				<text class="fontstyleC">{{docinfoData.DocumentContent}}</text>
+			</label>
+		</view>
+		<view>
+			<label>
+				<text class="fontstyle">附</text><text class="fontstyle" style="margin-left:36rpx;">件：</text>
+			</label>
+		</view>
+		<view>
+			<label>
+				<view wx:for="{{docFilesData}}" wx:key="Key">
+					<text style="color : blue;font-size: 18px;" data-AttachKey ="{{item.AttachKey}}" data-AttachName ="{{item.AttachName}}" bindtap="previewImage" >{{item.AttachName}}</text>
+				</view>
+			</label>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="title">流转详情</view>
+	</view>
+	<view class="page-section">
+		<view>
+			<template is="Collapse" data="{{...transferData}}" />
+		</view>
+	</view>
+	<text decode="{{true}}" style="padding-top:12rpx;padding-bottom:12rpx;">&ensp;\n&ensp;\n&ensp;\n&ensp;\n&ensp;</text>
+</view>
+<view>
+</view>
+<button bindtap="transferDoc" style="display:{{display}};width: 100%;background: linear-gradient(to right, #2F7DCD, #2F7DCD, #2F7DCD);  line-height: 150rpx; margin: 0 auto; border-radius: 5rpx; position: fixed;bottom: 0;font-size: 16px; color: #fff; font-weight: 400;" type="primary">审批并流转</button>

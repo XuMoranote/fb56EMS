@@ -1,0 +1,63 @@
+<!--pages/doc/noticeinfo/noticedetail.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<view class="page-section">
+		<!-- <view class="title">公告详情</view> -->
+		<view class="form-row">
+			<view class="form-row-label">发文部门</view>
+			<view class="form-row-content">
+				<text>{{noticeDetailData.Department}}</text>
+			</view>
+		</view>
+		<view class="form-row">
+			<view class="form-row-label">发文人</view>
+			<view class="form-row-content" style="margin-left: 35rpx">
+				<text >{{noticeDetailData.CreateMan}}</text>
+			</view>
+		</view>
+		<view class="form-row">
+			<view class="form-row-label">发文日期</view>
+			<view class="form-row-content">
+				<text>{{noticeDetailData.CreateDate}}</text>
+			</view>
+		</view>
+		<view class="form-row">
+			<view class="form-row-label">发文编号</view>
+			<view class="form-row-content">
+				<text>{{noticeDetailData.Code}}</text>
+			</view>
+		</view>
+		<view style="border:solid #DCDFE6;  border-width: 0rpx 1rpx 1rpx 1rpx;">
+			<label>
+				<view class="form-row row-set">
+					<view class="form-row-label">发文标题</view>
+				</view>
+				<view style="position:relative; left:-10rpx;top:-29rpx;vertical-align:middle">
+					<text class="text-set" style=" display: inline-block;vertical-align:middle" auto-height>{{noticeDetailData.Title}}</text>
+				</view>
+			</label>
+		</view>
+		<view style="border:solid #DCDFE6;  border-width: 0rpx 1rpx 1rpx 1rpx;">
+			<label>
+				<view class="form-row row-set">
+					<view class="form-row-label">正文</view>
+				</view>
+				<view style="position:relative; left:-10rpx;top:-29rpx;vertical-align:middle">
+					<text class="text-set" style=" display: inline-block;vertical-align:middle" auto-height >{{noticeDetailData.Content}}</text>
+				</view>
+			</label>
+		</view>
+		<view class="form-row">
+			<view class="form-row-label">附件</view>
+			<view class="form-row-content">
+			</view>
+		</view>
+		<view class="form-row row-set2" wx:for="{{noticeDetailData.Files}}" wx:key="Key">
+			<view class="form-row-label"></view>
+			<view class="form-row-content" onTap="fileTap">
+				<text style="color : blue" data-AttachKey ="{{item.AttachKey}}"  data-AttachName ="{{item.AttachName}}" bindtap="previewImage" >{{item.AttachName}}</text>
+			</view>
+		</view>
+	</view>
+</view>

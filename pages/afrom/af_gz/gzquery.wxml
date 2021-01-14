@@ -1,0 +1,38 @@
+<!--pages/afrom/af_gz/gzquery.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<view class="page-section">
+		<datepicker dateType='date2' bind:bindMultiPickerChange="bindPickerChange" bind:bindCancel="bindCancel">
+			<view slot='row-content'>
+				<view class="row">
+					<view class="row-title">当前查询工资月份:<text style="color:red">*</text></view>
+					<view class="row-extra">{{year_month}}</view>
+					<image class="row-arrow" src="/utils/icon/image/arrowright.png" />
+				</view>
+			</view>
+		</datepicker>
+	</view>
+	<!-- <view class="page-section">
+			<view class="form-row" style="position: relative;">
+				<view class="form-row-label" style=" position:absolute;left:15rpx;">
+					 的撒发射点发射点发
+				</view>
+				<view style="flex:1;font-size:34rpx;font-weight: bold;position:absolute;right:12rpx;">
+					 46485674984768.123
+				</view>	
+			</view>
+		</view> -->
+	<block wx:for="{{detailData}}" wx:key="Key">
+		<view class="page-section">
+			<view class="form-row" style="position: relative;">
+				<view class="form-row-label" style=" position:absolute;left:15rpx;">
+					{{item.text}}
+				</view>
+				<view style="flex:1;font-size:34rpx;font-weight: bold;position:absolute;right:12rpx;">
+					{{item.value}}
+				</view>	
+			</view>
+		</view>
+	</block>
+</view>

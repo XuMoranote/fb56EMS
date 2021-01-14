@@ -1,0 +1,16 @@
+/* pages/doc/workflow/wf_view/wf_file.wxss */
+.off-set{
+  margin-left: 35rpx;
+}
+.off-set2{
+  margin-left: 70rpx;
+}
+.off-set3{
+  margin-left: 105rpx;
+}
+.line{
+  margin: 0 auto;
+  width: 100%;
+  height: 10rpx;
+  background-color: #FFBB00;
+}

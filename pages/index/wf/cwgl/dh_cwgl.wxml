@@ -1,0 +1,9 @@
+<!--pages/index/wf/cwgl/dh_cwgl.wxml-->
+<view class="page">
+  <view wx:for="{{serversData}}" wx:key="key">
+    <button hidden="{{item.disabled}}" class='btn1' data-path='{{item.url}}' style="width:99%" bindtap="bindNavigator">
+      <image class='btnImg' src='{{item.icon}}'></image>
+      <view>{{item.name}}</view>
+    </button>
+  </view>
+</view>

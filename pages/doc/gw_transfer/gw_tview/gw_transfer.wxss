@@ -1,0 +1,29 @@
+/* pages/doc/gw_transfer/gw_tview/gw_transfer.wxss */
+@import '/Template/items/index.wxss';
+.title{
+  font-weight: bold;
+  font-size: large;
+  background-color:#73BF00;
+  padding-top: 12rpx;
+  padding-bottom: 12rpx;
+  font-style: italic;
+}
+.offset{
+  margin-left: 50rpx;
+}
+/*  */
+.btnSave{
+  height: 150rpx;
+  width: 100%;
+  text-align: center;
+  line-height: 150rpx;
+  margin: 0 auto;
+  border-radius: 5rpx;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(to right,#2F7DCD, #2F7DCD, #2F7DCD);
+  font-weight: 400; }

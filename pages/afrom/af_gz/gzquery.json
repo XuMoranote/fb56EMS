@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "mp-toptips": "/Componet/toptips/toptips",
+    "datepicker":  "/Componet/datePicker/datepicker"
+  }
+}

@@ -1,0 +1,80 @@
+<!--pages/afrom/af_yy/afrom.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<!-- <form onSubmit="onSubmit" onReset="onReset"> -->
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">申请人</view>
+			<view class="row-extra">{{formData.UserName}}</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">工号</view>
+			<view class="row-extra">{{formData.UserCode}}</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">用印次数/资质复印件份数<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="getUseCount" type="number" style="width:100%" value="{{UseCount}}" maxlength="100" placeholder="用印次数" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">是否财务相关<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<radio-group bindchange="radiochange">
+					<radio value='是'>是</radio>
+					<radio value='否'>否</radio>
+				</radio-group>
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+			<view class="row">
+				<view class="row-title">申请类型</view>
+				<view class="row-extra">{{array[index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row-label" style="padding: 0 30rpx;">原因及明细<text style="color:red">*</text></view>
+		<view class="page-section-demo">
+			<textarea bindinput="getReason" auto-height placeholder="原因及明细" maxlength="500" />
+			</view>
+    </view>
+    <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">附件<text style="color:red">*</text></view>
+        <view class="form-row-content">
+          <view class="page-section-btns">
+            <view bindtap="chooseImage">选择附件</view>
+            <view bindtap="onClearAttachTap">清除附件</view>
+          </view>
+        </view>
+      </view>
+      <view class="form-row" wx:for="{{formData.fileAttach}}" wx:key="key" >
+        <view class="form-row-label"></view>
+        <view class="form-row-content">      
+            <text>{{item.fileName}}</text>
+        </view>
+      </view>   
+    </view>
+    <view>
+      <!-- <button bindtap="onSubmit" 
+		style="background:#2F7DCD;color: #fff;width:100%;line-height:150rpx;height:150rpx;text-align:center;" >提交用印申请</button> -->
+    </view>
+  <!-- </form> -->
+</view>
+<view class="btnSave" bindtap="onSubmit">提交用印申请</view>

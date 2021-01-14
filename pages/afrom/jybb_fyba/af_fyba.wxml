@@ -1,0 +1,233 @@
+<!--pages/afrom/jybb_fyba/af_fyba.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<!-- <form onSubmit="onSubmit" onReset="onReset"> -->
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">申请人</view>
+			<view class="row-extra">{{formData.UserName}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">工号</view>
+			<view class="row-extra">{{formData.UserCode}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部</view>
+			<view class="row-extra">{{formData.szfb}}</view>
+			<!-- <view class="form-row-content" style="width:100%">
+				<input bindinput="getUseCount" style="width:100%" value="{{formData.szfb}}" maxlength="100" placeholder="所在分部" />
+			</view> -->
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部编码</view>
+			<view class="row-extra">{{formData.szfbbm}}</view>
+			<!-- <view class="form-row-content" style="width:100%">
+				<input bindinput="getUseCount" type="number" style="width:100%" value="{{formData.szfbbm}}" maxlength="100" placeholder="所在分部编码" />
+			</view> -->
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网点名称<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_wdmc" style="width:100%" maxlength="100" placeholder="请输入网点名称" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网点代码<text style="color:red"></text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_wddm" style="width:100%" maxlength="100" placeholder="请输入网点代码" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<picker bindchange="bindPickerChange_wdcj" value="{{wdcj_index}}" range="{{wdcj_array}}">
+			<view class="row">
+				<view class="row-title">网点层级<text style="color:red">*</text></view>
+				<view class="row-extra">{{wdcj_array[wdcj_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+
+	<view class="page-section">
+		<picker bindchange="bindPickerChange_sheng" value="{{sheng_index}}" range="{{sheng_array_select}}">
+			<view class="row">
+				<view class="row-title">省<text style="color:red">*</text></view>
+				<view class="row-extra">{{sheng_array_select[sheng_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+
+	<view class="page-section">
+		<picker bindchange="bindPickerChange_cheng" value="{{cheng_index}}" range="{{cheng_array_select}}">
+			<view class="row">
+				<view class="row-title">市<text style="color:red">*</text></view>
+				<view class="row-extra">{{cheng_array_select[cheng_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网点是否到件<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<radio-group bindchange="radio_sfdj">
+					<radio value='是'>是</radio>
+					<radio value='否'>否</radio>
+				</radio-group>
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网点是否覆盖盲区<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<radio-group bindchange="radio_sffgmq">
+					<radio value='是'>是</radio>
+					<radio value='否'>否</radio>
+				</radio-group>
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">申请实收加盟费（元）<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_ssjmf" type="number" style="width:100%" maxlength="100" placeholder="请输入实收加盟费" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">申请实收保证金（元）<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_ssbzj" type="number" style="width:100%" maxlength="100" placeholder="请输入实收保证金" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">申请实收网络管理费（元）<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_sswgf" type="number" style="width:100%" maxlength="100" placeholder="请输入网管费" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">申请实收证照资质保证金（元）<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_sszzzzbzj" type="number" style="width:100%" maxlength="100" placeholder="请输入资质保证金" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">申请实收装修保证金（元）<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_sszxbzj" type="number" style="width:100%" maxlength="100" placeholder="请输入装修保证金" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">加盟费减免金额（元）<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_jmfjmje" type="number" style="width:100%" maxlength="100" placeholder="请在此输入费用金额" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">保证金减免金额（元）<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_bzjjmje" type="number" style="width:100%" maxlength="100" placeholder="请在此输入费用金额" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网络管理费减免金额（元）<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_wgfjmje" type="number" style="width:100%" maxlength="100" placeholder="请在此输入费用金额" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">证照资质保证金减免金额（元）<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_zzzzbzjjmje" type="number" style="width:100%" maxlength="100" placeholder="请在此输入费用金额" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">装修保证金减免金额（元）<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_zxbzjjmje" type="number" style="width:100%" maxlength="100" placeholder="请在此输入费用金额" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label"> 减免总金额（元）<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_jmzje" value="{{formData.jmzje}}" type="number" style="width:100%" maxlength="100" placeholder="请在此输入费用金额" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row-label" style="padding: 0 30rpx;">申请原因<text style="color:red">*</text></view>
+		<view class="page-section-demo">
+			<textarea bindinput="input_Reason" auto-height placeholder="申请原因" maxlength="500" />
+			</view>
+    </view>
+    <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">附件<text style="color:red">*</text></view>
+        <view class="form-row-content">
+          <view class="page-section-btns">
+            <view bindtap="chooseImage">选择附件</view>
+            <view bindtap="onClearAttachTap">清除附件</view>
+          </view>
+        </view>
+      </view>
+      <view class="form-row" wx:for="{{formData.fileAttach}}" wx:key="key" >
+        <view class="form-row-label"></view>
+        <view class="form-row-content">      
+            <text>{{item.fileName}}</text>
+        </view>
+      </view>   
+    </view>
+    <view>
+      <button bindtap="onSubmit" 
+		style="background:#2F7DCD;color: #fff;width:100%;line-height:150rpx;height:150rpx;text-align:center;" >提交费用备案</button>
+    </view>
+  <!-- </form> -->
+</view>

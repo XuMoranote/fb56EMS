@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "调休单",
+  "usingComponents": {
+    "datepicker":  "/Componet/datePicker/datepicker",
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

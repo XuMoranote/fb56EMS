@@ -1,0 +1,37 @@
+/* pages/doc/gw_transfer/gw_tview/gw_tdetail.wxss */
+.fontstyle {
+  font-size: 18px;
+  font-weight: bold
+}
+.fontstyleC {
+  font-size: 18px;
+  font-weight: bold
+}
+.title{
+  font-weight: bold;
+  font-size: large;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+ background-color:#2F7DCD;
+ /* background: linear-gradient(to right, #1797ec2f, #40f5ec05, #40f5ec05); */ 
+ color: rgb(255, 255, 255);
+  padding-top: 12rpx;
+  padding-bottom: 12rpx;
+}
+.offset{
+  margin-left: 40rpx;
+}
+@import '/Template/collapse/index.wxss';
+
+.a-collapse-content {
+  font-weight: bold;
+  font-size: 20px;
+}
+.a-collapse-title{
+  font-size: 14px;
+}
+/* 解决折叠串行问题 */
+.collapse-title{
+  overflow:auto; 
+  text-overflow:clip;
+  white-space:nowrap; 
+} 

@@ -1,0 +1,148 @@
+<!--pages/afrom/jybb_xgsq/af_xgsq.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">申请人</view>
+			<view class="row-extra">{{formData.UserName}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">工号</view>
+			<view class="row-extra">{{formData.UserCode}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部</view>
+			<view class="row-extra">{{formData.szfb}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部编码</view>
+			<view class="row-extra">{{formData.szfbbm}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网点名称<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_wdmc" style="width:100%" maxlength="100" placeholder="请输入网点名称" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网点代码<text style="color:red"></text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_wddm" style="width:100%" maxlength="100" placeholder="请输入网点代码" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<picker bindchange="bindPickerChange_wdcj" value="{{wdcj_index}}" range="{{wdcj_array}}">
+			<view class="row">
+				<view class="row-title">网点层级<text style="color:red">*</text></view>
+				<view class="row-extra">{{wdcj_array[wdcj_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+	<view class="page-section">
+		<picker bindchange="bindPickerChange_sheng" value="{{sheng_index}}" range="{{sheng_array_select}}">
+			<view class="row">
+				<view class="row-title">省区<text style="color:red">*</text></view>
+				<view class="row-extra">{{sheng_array_select[sheng_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网点地址<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_wddz" style="width:100%" maxlength="100" placeholder="请输入网点地址" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">代理电话<text style="color:red"></text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_dldh" style="width:100%" maxlength="100" placeholder="请输入网点代码" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">是否开关到件<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<radio-group bindchange="radio_sfdj">
+					<radio value='是'>是</radio>
+					<radio value='否'>否</radio>
+				</radio-group>
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">是否修改GIS地图<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<radio-group bindchange="radio_sfxgGIS">
+					<radio value='是'>是</radio>
+					<radio value='否'>否</radio>
+				</radio-group>
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">是否网点路由<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<radio-group bindchange="radio_sfxgwdly">
+					<radio value='是'>是</radio>
+					<radio value='否'>否</radio>
+				</radio-group>
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">是否修改网点价格<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<radio-group bindchange="radio_sfxgwdjg">
+					<radio value='是'>是</radio>
+					<radio value='否'>否</radio>
+				</radio-group>
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row-label" style="padding: 0 30rpx;">申请原因<text style="color:red">*</text></view>
+		<view class="page-section-demo">
+			<textarea bindinput="input_Reason" auto-height placeholder="申请原因" maxlength="500" />
+			</view>
+  </view> 
+  <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">附件<text style="color:red">*</text></view>
+        <view class="form-row-content">
+          <view class="page-section-btns">
+            <view bindtap="chooseImage">选择附件</view>
+            <view bindtap="onClearAttachTap">清除附件</view>
+          </view>
+        </view>
+      </view>
+      <view class="form-row" wx:for="{{formData.fileAttach}}" wx:key="key" >
+        <view class="form-row-label"></view>
+        <view class="form-row-content">      
+            <text>{{item.fileName}}</text>
+        </view>
+      </view>   
+    </view>
+ <button bindtap="onSubmit"
+   style="background:#2F7DCD;color: #fff;width:100%;line-height:150rpx;height:150rpx;text-align:center;" >提交修改申请</button>
+</view>

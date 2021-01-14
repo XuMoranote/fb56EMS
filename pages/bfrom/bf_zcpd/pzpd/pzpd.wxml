@@ -1,0 +1,34 @@
+<!--pages/bfrom/bf_zcpd/pzpd/pzpd.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+  <view class="page-section">
+    <view class="form-row">
+      <view class="form-row-label">资产正常拍照盘点</view>
+    </view>
+  </view>
+
+  <!--拍照上传-->
+  <!-- <block wx:if="{{inventoryObject.CusC_ChooseImg == 'show'}}"> -->
+  <view class="page-section">
+    <!--上传的附件预览-->
+    <view class="section" wx:for="{{photos}}" wx:for-item="item">
+      <image style="background-color: #eeeeee; width: 300px; height:250px;" mode="scaleToFill" src="{{item.Src}}" />
+    </view>
+    <!--上传附件操作-->
+    <view class="form-row">
+      <view class="form-row-label">附件</view>
+      <view class="form-row-content">
+        <view class="page-section-btns">
+          <view bindtap="handleBeginChoosePhoto">选择照片</view>
+          <view bindtap="onClearAttachTap">清除附件</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <button style="background:#2F7DCD;color: #fff;width:100%;line-height:100rpx;height:100rpx;text-align:center;"
+      bindtap="onTapSavephoto">保存</button>
+  </view>
+  <!-- </block> -->
+</view>

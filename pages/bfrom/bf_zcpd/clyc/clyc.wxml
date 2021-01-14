@@ -1,0 +1,42 @@
+<!--pages/bfrom/bf_zcpd/clyc/clyc.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+  <form bindsubmit="onSubmit" bindreset="onReset">
+    <view class="page-section">
+      <view class="form-row" style=" width: 150rpx; text-align: center">
+        <view class="form-row-label">异常类型</view>
+      </view>
+      <view class="page-section-demo">
+        <radio-group name="ErrorType" class="radio-group">
+          <label class="radio" wx:for="{{errorItem}}">
+            <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <!-- <view class="page-section">
+      <view class="form-row-label">异常描述</view>
+      <view class="page-section-demo">
+        <textarea name="ErrorMsg" maxlength="100" auto-height placeholder="请填写异常描述" />
+        </view>
+    </view> -->
+    <view class="page-section">
+      <view class="form-row" style=" width: 150rpx; text-align: center">
+        <view class="form-row-label">异常描述</view>
+      </view>
+      <view class="form-row-content" decode="{{true}}">
+        <textarea name="ErrorMsg"
+          style="min-height:80rpx;font-size:34rpx;position:relative; left:80rpx; top:-5rpx;width:550rpx;" auto-height
+          placeholder="请填写异常描述" maxlength="800" bindinput="SetContentValue"></textarea>
+      </view>
+    </view>
+
+    <view class="page-section">
+      <view>
+        <button style="background:#2F7DCD;color: #fff;width:100%;line-height:100rpx;height:100rpx;text-align:center;"
+          data-id="001" form-type="submit">保存</button></view>
+    </view>
+
+  </form>
+</view>

@@ -1,0 +1,127 @@
+<!--pages/afrom/jybb_shsq/af_shsq.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}" delay="{{3000}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">申请人</view>
+			<view class="row-extra">{{formData.UserName}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">工号</view>
+			<view class="row-extra">{{formData.UserCode}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部</view>
+			<view class="row-extra">{{formData.szfb}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部编码</view>
+			<view class="row-extra">{{formData.szfbbm}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<picker bindchange="bindPickerChange_zshgm" value="{{zshgm_index}}" range="{{zshgm_array}}">
+			<view class="row">
+				<view class="row-title">招商会规模<text style="color:red">*</text></view>
+				<view class="row-extra">{{zshgm_array[zshgm_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">招商会辐射区域<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_zshfsqy" style="width:100%" maxlength="100" placeholder="请输入招商会辐射区域" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">招商会政策(多选)<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<select id='myComponent' style="display: flex;align-items: center;width:100%" prop-array='{{selectArray}}' bind:myget='selectGetData'></select>
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<datepicker bind:bindMultiPickerChange="zshzksjDatePicker" bind:bindCancel="bindCancel">
+			<view slot='row-content'>
+				<view class="row">
+					<view class="row-title">招商会召开时间<text style="color:red">*</text></view>
+					<view class="row-extra">{{formData.zshzksj}}</view>
+					<image class="row-arrow" src="/utils/icon/image/arrowright.png" />
+				</view>
+			</view>
+		</datepicker>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">参会人数<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_chrs" style="width:100%" maxlength="100" placeholder="请收入参会人数" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">签约目标值<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_qymbz" style="width:100%" maxlength="100" placeholder="请收入签约目标值" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section" hidden="{{false}}">
+		<picker bindchange="bindPickerChange_cgwl" value="{{cgwl_index}}" range="{{cgwl_array}}">
+			<view class="row">
+				<view class="row-title">采购物料：<text style="color:red">*</text></view>
+				<view class="row-extra">{{cgwl_array[cgwl_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">是否需要宣传资料<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<radio-group bindchange="radiochange_sfxyxczl">
+					<radio value='是'>是</radio>
+					<radio value='否'>否</radio>
+				</radio-group>
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row-label" style="padding: 0 30rpx;">申请原因<text style="color:red">*</text></view>
+		<view class="page-section-demo">
+			<textarea bindinput="input_Reason" auto-height placeholder="申请原因" maxlength="500" />
+			</view>
+  </view> 
+  <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">附件<text style="color:red">*</text></view>
+        <view class="form-row-content">
+          <view class="page-section-btns">
+            <view bindtap="chooseImage">选择附件</view>
+            <view bindtap="onClearAttachTap">清除附件</view>
+          </view>
+        </view>
+      </view>
+      <view class="form-row" wx:for="{{formData.fileAttach}}" wx:key="key" >
+        <view class="form-row-label"></view>
+        <view class="form-row-content">      
+            <text>{{item.fileName}}</text>
+        </view>
+      </view>   
+    </view>
+ <button bindtap="onSubmit"
+   style="background:#2F7DCD;color: #fff;width:100%;line-height:150rpx;height:150rpx;text-align:center;" >提交招商会申请</button>
+</view>

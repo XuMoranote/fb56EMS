@@ -1,0 +1,102 @@
+<!--pages/afrom/rlzy_dxd/af_dexd.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<import src="/Template/items/index.wxml" />
+<view class="page">
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">申请人</view>
+			<view class="row-extra">{{formData.UserName}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">工号</view>
+			<view class="row-extra">{{formData.UserCode}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<datepicker id="date-time-picker" bind:bindMultiPickerChange="startDatePicker" bind:bindCancel="bindCancel">
+			<view slot='row-content'>
+				<view class="row">
+					<view class="row-title">开始时间<text style="color:red">*</text></view>
+					<view class="row-extra">{{formData.startDate}}</view>
+					<image class="row-arrow" src="/utils/icon/image/arrowright.png" />
+				</view>
+			</view>
+		</datepicker>
+	</view>
+	<view class="page-section">
+		<datepicker bind:bindMultiPickerChange="endDatePicker" bind:bindCancel="bindCancel">
+			<view slot='row-content'>
+				<view class="row">
+					<view class="row-title">结束时间<text style="color:red">*</text></view>
+					<view class="row-extra">{{formData.endDate}}</view>
+					<image class="row-arrow" src="/utils/icon/image/arrowright.png" />
+				</view>
+			</view>
+		</datepicker>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">合计天数<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input type="digit" style="width:100%" bindinput="getsumDay" value="{{formData.totalHour}}" maxlength="100" placeholder="请输入合计天数" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">职务代理<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input style="width:100%" bindinput="getSpUserValue" bindconfirm="scanSpUser" value="{{formData.DutyAgentName}}" maxlength="100" placeholder="检索工号/姓名" />
+			</view>
+			<icon style="display: flex;align-items: center;" size='18' type='search' bindtap='scanSpUser'></icon>
+		</view>
+		<view class="form-row" wx:for='{{userArraylist}}' wx:key="key">
+			<view class="form-row-content" data-idx='{{index}}' value='{{inputVal[index]}}'>
+				<scroll-view scroll-x style=" display: flex; white-space: nowrap;">
+					<view class="input font-value" style="width: 200rpx;display: inline-block; " bindtap='delSPUser' data-set='{{item}}' data-idx='{{index}}'>
+						{{inputVal[index]}}
+					</view>
+				</scroll-view>
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">代理电话<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input style="width:100%" bindinput='getTel' value="{{formData.Tel}}" maxlength="100" placeholder="代理电话" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">调休事由<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="getReason" value="{{formData.Reason}}" maxlength="100" placeholder="调休事由" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">附件</view>
+			<view class="form-row-content">
+				<view class="page-section-btns">
+					<view bindtap="chooseImage">选择附件</view>
+					<view bindtap="onClearAttachTap">清除附件</view>
+				</view>
+			</view>
+		</view>
+		<view class="form-row" wx:for="{{formData.fileAttach}}" wx:key="key">
+			<view class="form-row-label"></view>
+			<view class="form-row-content">
+				<text>{{item.fileName}}</text>
+			</view>
+		</view>
+	</view>
+	<view>
+		<button bindtap="onSubmit" style="background:#2F7DCD;color: #fff;width:100%;line-height:150rpx;height:150rpx;text-align:center;">提交调休</button>
+	</view>
+</view>

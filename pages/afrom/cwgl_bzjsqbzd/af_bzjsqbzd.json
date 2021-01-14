@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText":"保证金申请报账单",
+  "usingComponents": {
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

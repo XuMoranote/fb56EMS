@@ -1,0 +1,44 @@
+<!--pages/doc/gw_transfer/gw_list.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<import src="/Template/list/index.wxml" />
+<view class="page">
+	<view class="page-section">
+		<view class="page-section-demo">
+			<view class="search-outer">
+				<input class="search-input" bindinput="InputSearchValue" placeholder="公文标题检索" value="{{searchValue}}" bindconfirm="SearchWFRows" />
+				<text class="search-cancel" bindtap="clearSearch">取消</text>
+			</view>
+		</view>
+		<!-- <view>
+			<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+				<view class="row">
+					<view class="row-title">类型筛选：</view>
+					<view class="row-extra">当前选择：{{array[index]}}</view>
+					<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+				</view>
+			</picker>
+		</view> -->
+
+		<view>
+				<view slot='row-content'>
+					<view class="row">
+						<view class="row-title">事项类型</view>
+						<radio-group bindchange="bindRadioChange" class="redio-style">
+						<radio value='0' checked="true" class="radioItem" >待审批 </radio>
+						<radio  value='1' class="radioItem"  >已审批 </radio>
+						<radio  value='2'  class="radioItem"  >我发起的 </radio>
+				</radio-group>
+					</view>
+				</view>	
+		</view>
+
+	</view>
+
+	<view class="page-section">
+		<view class="page-section-title"></view>
+		<view>
+			<template is="List" data="{{...docListData}}" />
+		</view>
+	</view>
+</view>

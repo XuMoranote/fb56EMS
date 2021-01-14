@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText":"新开网点入网申请",
+  "usingComponents": {
+    "timepicker":  "/Componet/datePicker/timepicker",
+    "mp-toptips": "/Componet/toptips/toptips"
+  
+  }
+}

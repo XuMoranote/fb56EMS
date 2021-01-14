@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "个人信息查看",
+  "usingComponents": {
+    "mp-toptips": "/Componet/toptips/toptips"   
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText":"场地费用报账单",
+  "usingComponents": {
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

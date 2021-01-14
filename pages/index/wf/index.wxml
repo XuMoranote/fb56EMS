@@ -1,0 +1,13 @@
+<!--pages/index/wf/index.wxml -->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<import src="/Template/grid/index.wxml" />
+<view class="page">
+	<view class="page-section">
+  </view>
+  <view class="page-section">
+  </view>
+	<view class="page-section">
+		<template is="gridItem" data="{{serversData}}"></template>
+	</view>
+</view>

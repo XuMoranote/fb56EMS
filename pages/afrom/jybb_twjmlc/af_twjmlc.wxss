@@ -1,0 +1,5 @@
+/* pages/afrom/jybb_twjmlc/af_twjmlc.wxss */
+@import '/pages/afrom/af_qj/afrom.wxss';
+.free-btn::after{
+  border: none;
+}

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "出差申请",
+  "usingComponents": {
+    "datepicker":  "/Componet/datePicker/datepicker",
+    "mp-toptips": "/Componet/toptips/toptips",
+    "etable" : "/Componet/tabel/etable/etable"
+  }
+}

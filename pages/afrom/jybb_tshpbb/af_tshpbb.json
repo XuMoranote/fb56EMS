@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText":"特殊货品报备",
+  "usingComponents": {
+    "timepicker":  "/Componet/datePicker/timepicker",
+    "datepicker":  "/Componet/datePicker/datepicker",
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

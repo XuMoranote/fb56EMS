@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText":"专项报账单",
+  "usingComponents": {
+    "mp-toptips": "/Componet/toptips/toptips",
+    "etable" : "/Componet/tabel/etable/etable"
+  }
+}

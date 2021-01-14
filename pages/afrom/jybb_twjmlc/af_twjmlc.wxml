@@ -1,0 +1,193 @@
+<!--pages/afrom/jybb_twjmlc/af_twjmlc.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">申请人</view>
+			<view class="row-extra">{{formData.UserName}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">工号</view>
+			<view class="row-extra">{{formData.UserCode}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部</view>
+			<view class="row-extra">{{formData.szfb}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部编码</view>
+			<view class="row-extra">{{formData.szfbbm}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<picker bindchange="bindPickerChange_sheng" value="{{sheng_index}}" range="{{sheng_array_select}}">
+			<view class="row">
+				<view class="row-title">网点所在省区<text style="color:red">*</text></view>
+				<view class="row-extra">{{sheng_array_select[sheng_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+	<view class="page-section">
+		<picker bindchange="bindPickerChange_szsqxz" value="{{szsqxz_index}}" range="{{szsqxz_array}}">
+			<view class="row">
+				<view class="row-title">所在省区性质<text style="color:red">*</text></view>
+				<view class="row-extra">{{szsqxz_array[szsqxz_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网点名称:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_wdmc" style="width:100%" maxlength="100" placeholder="请输入网点名称" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网点代码:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_wddm" style="width:100%" maxlength="100" placeholder="请输入网点代码" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网点负责人姓名:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_wdfzr" style="width:100%" maxlength="100" placeholder="请输入网点负责人姓名" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网点负责人电话:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_wdfzrdh" style="width:100%" maxlength="100" placeholder="请输入网点负责人电话" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网点地址<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_wddz" style="width:100%" maxlength="100" placeholder="请输入网点地址" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<picker bindchange="bindPickerChange_wdcj" value="{{wdcj_index}}" range="{{wdcj_array}}">
+			<view class="row">
+				<view class="row-title">网点层级<text style="color:red">*</text></view>
+				<view class="row-extra">{{wdcj_array[wdcj_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">退网流程编号:<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_twlcbh" style="width:100%" maxlength="100" placeholder="请输入退网流程编号" />
+			</view>
+		</view>
+  </view>
+  
+  <view class="page-section">
+		<view class="form-row">
+      <view class="form-row-label">填写费用明细:<text style="color:red">*</text></view>
+      <!-- <view class="form-row-content" style="width:100%"> -->
+        <button class="free-btn" bindtap="txfymx" style="background:#2F7DCD;color: #fff;text-align:left;font-size: 12pt;" >点我填写</button>
+			<!-- </view> -->
+      <!-- <image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" /> -->
+		</view>
+	</view>
+
+	<view class="page-section" hidden="{{showViewTable}}">
+    <picker bindchange="bindPickerChange_sqjmx1" value="{{sqjmx1_index}}" range="{{sqjmx1_array}}">
+			<view class="row">
+				<view class="row-title">申请减免项1<text style="color:red">*</text></view>
+				<view class="row-extra">{{sqjmx1_array[sqjmx1_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+  </view>
+  <view class="page-section" hidden="{{showViewTable}}">
+    <picker bindchange="bindPickerChange_sqjmx2" value="{{sqjmx2_index}}" range="{{sqjmx2_array}}">
+			<view class="row">
+				<view class="row-title">申请减免项2<text style="color:red">*</text></view>
+				<view class="row-extra">{{sqjmx2_array[sqjmx2_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+  </view>
+  <view class="page-section" hidden="{{showViewTable}}">
+    <picker bindchange="bindPickerChange_sqjmx3" value="{{sqjmx3_index}}" range="{{sqjmx3_array}}">
+			<view class="row">
+				<view class="row-title">申请减免项3<text style="color:red">*</text></view>
+				<view class="row-extra">{{sqjmx3_array[sqjmx3_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+  </view>
+  <view class="page-section" hidden="{{showViewTable}}">
+		<view class="form-row">
+			<view class="form-row-label">费用<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input type='digit' bindinput="input_fy" value="{{formData.fy}}" adjust-position="true" style="width:100%" maxlength="10" placeholder="请输入费用值" />
+			</view>
+		</view>
+	</view>
+	<view hidden="{{showViewTable}}">
+    <button bindtap="addFeeType" style="background:#2F7DCD;color:#fff;width:100%;text-align:center;font-size: 12pt;">添加</button>
+  </view>
+  <scroll-view class="page-section" scroll-x style="width: 100%; display: flex; white-space: nowrap;">
+		<view hidden="{{showViewTable}}" style='font-size: 32rpx;width:960rpx'>
+		 <etable config="{{fyTabel}}" bind:myget='deleteRowfy'/>
+		</view>
+	</scroll-view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">申请减免合计金额<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+        <input bindinput="input_sqjmhjje" value="{{formData.sqjmhjje}}" style="width:100%" maxlength="30" disabled="{{true}}"/>
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row-label" style="padding: 0 30rpx;">减免描述<text style="color:red">*</text></view>
+		<view class="page-section-demo">
+			<textarea bindinput="input_Reason" auto-height placeholder="请输入减免描述" maxlength="500" />
+			</view>
+  </view> 
+  <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">附件<text style="color:red">*</text></view>
+        <view class="form-row-content">
+          <view class="page-section-btns">
+            <view bindtap="chooseImage">选择附件</view>
+            <view bindtap="onClearAttachTap">清除附件</view>
+          </view>
+        </view>
+      </view>
+      <view class="form-row" wx:for="{{formData.fileAttach}}" wx:key="key" >
+        <view class="form-row-label"></view>
+        <view class="form-row-content">      
+            <text>{{item.fileName}}</text>
+        </view>
+      </view>   
+    </view>
+ <button bindtap="onSubmit"
+   style="background:#2F7DCD;color: #fff;width:100%;line-height:150rpx;height:150rpx;text-align:center;" >提交退网减免流程</button>
+</view>

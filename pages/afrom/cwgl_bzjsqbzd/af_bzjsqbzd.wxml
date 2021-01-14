@@ -1,0 +1,211 @@
+<!--pages/afrom/cwgl_bzjsqbzd/af_bzjsqbzd.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<!-- <form onSubmit="onSubmit" onReset="onReset"> -->
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">申请人</view>
+			<view class="row-extra">{{formData.UserName}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">工号</view>
+			<view class="row-extra">{{formData.UserCode}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部</view>
+			<view class="row-extra">{{formData.szfb}}</view>
+			<!-- <view class="form-row-content" style="width:100%">
+				<input bindinput="getUseCount" style="width:100%" value="{{formData.szfb}}" maxlength="100" placeholder="所在分部" />
+			</view> -->
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部编码</view>
+			<view class="row-extra">{{formData.szfbbm}}</view>
+			<!-- <view class="form-row-content" style="width:100%">
+				<input bindinput="getUseCount" type="number" style="width:100%" value="{{formData.szfbbm}}" maxlength="100" placeholder="所在分部编码" />
+			</view> -->
+		</view>
+	</view>
+
+  <view class="page-section">
+		<picker bindchange="bindPickerChange_gzllx" value="{{gzllx_index}}" range="{{gzllx_array}}">
+			<view class="row">
+				<view class="row-title">工作流类型1<text style="color:red">*</text></view>
+				<view class="row-extra">{{gzllx_array[gzllx_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+  <view class="page-section">
+		<picker bindchange="bindPickerChange_gzllx2" value="{{gzllx2_index}}" range="{{gzllx2_array}}">
+			<view class="row">
+				<view class="row-title">工作流类型2<text style="color:red">*</text></view>
+				<view class="row-extra">{{gzllx2_array[gzllx2_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+  <view class="page-section">
+		<picker bindchange="bindPickerChange_gzllx3" value="{{gzllx3_index}}" range="{{gzllx3_array}}">
+			<view class="row">
+				<view class="row-title">工作流类型3<text style="color:red">*</text></view>
+				<view class="row-extra">{{gzllx3_array[gzllx3_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+  
+  <view class="page-section">
+		<picker bindchange="bindPickerChange_gszt" value="{{gszt_index}}" range="{{gszt_array}}">
+			<view class="row">
+				<view class="row-title">公司主体<text style="color:red">*</text></view>
+				<view class="row-extra">{{gszt_array[gszt_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+  
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">收款方<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_skf" style="width:100%" maxlength="30" placeholder="请输入收款方" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<picker bindchange="bindPickerChange_zhxz" value="{{zhxz_index}}" range="{{zhxz_array}}">
+			<view class="row">
+				<view class="row-title">账户性质<text style="color:red">*</text></view>
+				<view class="row-extra">{{zhxz_array[zhxz_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+
+  <view class="page-section">
+		<picker bindchange="bindPickerChange_skzhxz" value="{{skzhxz_index}}" range="{{skzhxz_array}}">
+			<view class="row">
+				<view class="row-title">收款账户性质<text style="color:red">*</text></view>
+				<view class="row-extra">{{skzhxz_array[skzhxz_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">银行账号<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_BankAccount" type="number" value='{{formData.BankAccount}}' style="width:100%" maxlength="30" placeholder="请输入银行账号" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">开户银行<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_KHBank" style="width:100%" maxlength="30" placeholder="请输入开户银行" />
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">开户支行<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_KHZHBank" style="width:100%" maxlength="30" placeholder="请输入开户支行" />
+			</view>
+		</view>
+	</view>
+  
+  <!-- 1.adjust-position:true  键盘弹起时，是否自动上推页面 2.bindinput="inputedit":类似双向绑定，实现实时获取输入框值 3.type='digit' 带小数点的数字键盘-->
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">报销金额（元）<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input type='digit' bindinput="input_bxj" value="{{formData.bxj}}" adjust-position="true" style="width:100%" maxlength="10" placeholder="请输入报销金额"/>
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">扣款金额（元）<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input type="digit" bindinput="input_kkj" value="{{formData.kkj}}" adjust-position="true" style="width:100%" maxlength="10" placeholder="请输入扣款金额"/>
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">付款金额(报销-扣款)（元）<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input type="digit" bindinput="input_fkj" value="{{formData.fkj}}" adjust-position="true" style="width:100%" maxlength="11" placeholder="请输入付款金额"/>
+			</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">预付(借款)金额（元）<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input type="digit" bindinput="input_yfjk" value="{{formData.yfjk}}" adjust-position="true" style="width:100%" maxlength="10" placeholder="请输入预付(借款)金额"/>
+			</view>
+		</view>
+	</view>
+  <view class="page-section">
+    <view class="form-row">
+			<view class="form-row-label">币种<text style="color:red"></text></view>
+			<view class="form-row-content" style="width:100%">
+				<input value="RMB" disabled="{{true}}" />
+			</view>
+		</view>
+	</view>
+  <view class="page-section">
+    <view class="form-row">
+			<view class="form-row-label">付款金额大写<text style="color:red"></text></view>
+			<view class="form-row-content" style="width:100%">
+				<input value="{{formData.fkjdx}}" disabled="{{true}}"/>
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row-label" style="padding: 0 30rpx;">申请原因<text style="color:red">*</text></view>
+		<view class="page-section-demo">
+			<textarea bindinput="input_Reason" auto-height placeholder="申请原因" maxlength="500" />
+			</view>
+    </view>
+    <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">附件<text style="color:red">*</text></view>
+        <view class="form-row-content">
+          <view class="page-section-btns">
+            <view bindtap="chooseImage">选择附件</view>
+            <view bindtap="onClearAttachTap">清除附件</view>
+          </view>
+        </view>
+      </view>
+      <view class="form-row" wx:for="{{formData.fileAttach}}" wx:key="key" >
+        <view class="form-row-label"></view>
+        <view class="form-row-content">      
+            <text>{{item.fileName}}</text>
+        </view>
+      </view>   
+    </view>
+    <view>
+      <button bindtap="onSubmit" 
+		style="background:#2F7DCD;color: #fff;width:100%;line-height:150rpx;height:150rpx;text-align:center;" >提交保证金申请报账单</button>
+    </view>
+  <!-- </form> -->
+</view>

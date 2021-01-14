@@ -1,0 +1,4 @@
+<!--Componet/datePicker/datepicker.wxml-->
+<picker mode="multiSelector" bindchange="_bindMultiPickerChange" bindcolumnchange="_bindMultiPickerColumnChange" bindcancel="_bindCancel" value="{{nowDate}}" range="{{multiArray}}" range-key="{{'title'}}" >
+   <slot name="row-content"></slot>
+</picker>

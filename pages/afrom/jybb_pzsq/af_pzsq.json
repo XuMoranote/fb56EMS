@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText":"价格配置申请",
+  "usingComponents": {
+    "datepicker":  "/Componet/datePicker/datepicker",
+    "select": "/Componet/select/dselect/dxs",
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

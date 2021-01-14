@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "公文查看",
+  "usingComponents": {  
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

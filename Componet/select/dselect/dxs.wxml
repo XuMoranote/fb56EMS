@@ -1,0 +1,12 @@
+<!--Componet/select/dselect/dxs.wxml-->
+<view class='com-selectBox'>
+    <view class='com-sContent' bindtap='selectToggle'>
+        <view class='com-sTxt'>{{ nowText==' ' ? propArray[0].text : nowText }}</view>
+        <image class='com-sImg image-select'  animation="{{animationData}}"></image>
+    </view>
+    <view class='com-sList' wx:if="{{selectShow}}" bindtap ='zdgb'>
+        <view wx:for="{{propArray}}" data-index="{{index}}" wx:key='' class='com-sItem' bindtap='setText'>        
+        {{item.text}} 
+        </view>
+    </view>
+</view>

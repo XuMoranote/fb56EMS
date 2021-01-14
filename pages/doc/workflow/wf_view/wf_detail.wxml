@@ -1,0 +1,267 @@
+<!--pages/doc/workflow/wf_view/wf_detail.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<block wx:for="{{detailData}}" wx:key="Key">
+		<view wx:if="{{item.Type == 'text'}}" class="page-section">
+			<view class="form-row">
+				<view class="form-row-label">{{item.Title}}</view>
+				<view wx:if="{{item.Title.length >= 5}}" class="form-row-content">
+					<view wx:if="{{item.FieldValue.length < 20}}">
+						<input disabled name="input" class="input font-value" placeholder="" value="{{item.FieldValue}}" />
+					</view>
+					<view wx:else>
+						<scroll-view scroll-x style=" display: flex; white-space: nowrap;">
+							<view class="input font-value" style="width: 200rpx;display: inline-block; ">
+								{{item.FieldValue}}
+							</view>
+						</scroll-view>
+					</view>
+				</view>
+				<view wx:if="{{item.Title.length == 4}}" class="form-row-content off-set">
+					<input disabled name="input" class="input font-value" placeholder="" value="{{item.FieldValue}}" />
+				</view>
+				<view wx:if="{{item.Title.length == 3}}" class="form-row-content off-set2">
+					<input disabled name="input" class="input font-value" placeholder="" value="{{item.FieldValue}}" />
+				</view>
+				<view wx:if="{{item.Title.length < 3}}" class="form-row-content off-set3">
+					<view wx:if="{{item.FieldValue.length < 20}}">
+						<input disabled name="input" class="input font-value" placeholder="" value="{{item.FieldValue}}" />
+					</view>
+					<view wx:else>
+						<scroll-view scroll-x style=" display: flex; white-space: nowrap;">
+							<view class="input font-value" style="width: 200rpx;display: inline-block; ">
+								{{item.FieldValue}}
+							</view>
+						</scroll-view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view wx:elif="{{ item.Type == 'textarea'}}" class="page-section">
+			<view class="page-section-title" style=" font-size: 34rpx;">{{item.Title}}</view>
+			<view class="page-section-demo">
+				<textarea disabled class="font-value" maxlength="-1" auto-height="true" name="textarea" placeholder="" value="{{item.FieldValue}}" />
+				</view>
+    </view>
+    <view wx:elif="{{ item.Type == 'link'}}" class="page-section"> 
+      <view class="form-row">
+        <view class="form-row-label">{{item.Title}}</view>
+        <view class="form-row-content off-set">
+          <view style="color : blue;font-size:18px" data-Detail ="{{item.FieldValue}}" bindtap="previewDetail" >点击看明细</view>
+        </view>
+      </view>
+    </view>
+    <view wx:else="{{ item.Type =='file'}}" class="page-section"> 
+      <view class="page-section-title" style=" font-size: 34rpx;">{{ item.Title}}</view>
+      <view class="page-section-demo">
+        <label>
+          <block  wx:for="{{item.FieldValue}}"  wx:for-item="attach" wx:key="key" >
+            <view >
+              <text style="color : blue;font-size:18px" data-AttachKey ="{{attach.AttachKey}}"  data-AttachName ="{{attach.AttachName}}" data-UpBucketName ="{{attach.UpBucketName}}"   bindtap="previewImage" >{{attach.AttachName}}</text>
+            </view>
+          </block>
+        </label>
+      </view>
+    </view>
+  </block>
+  
+  <!-- 审批流程详情 -->
+  <!-- <view  class="page-section"> 
+    <view class="form-row">
+      <view class="form-row-label">已审详情</view>
+      <view  class="form-row-content off-set ss">
+        点击查点击查看详情点击查看详情点击查看详情看详情
+      </view>
+    </view>    
+  </view> -->
+
+  <view  class="page-section"> 
+    <view class="form-row">
+      <view class="form-row-label"></view>
+      <view  class="form-row-content off-set6">
+        <text style="color : #ef4136; font-weight:bold "  >以下是审核详情</text>
+      </view>
+    </view>   
+  </view>
+
+  <block wx:for="{{stepInfoData}}"  wx:for-item="stepInfo"  wx:key="Key">
+    <block wx:for="{{stepInfo}}" wx:key="key">
+      <view class="page-section">
+          <block  wx:if="{{item.Type == 'text' && item.Title !== '状态' && item.Title !== '备注'}}"> 
+            <view class="form-row">
+              <view class="form-row-label">{{item.Title}}</view>
+              <view wx:if="{{item.Title.length >= 5}}" class="form-row-content">                
+                <input disabled name="input" class="input font-value" placeholder="" value="{{item.FieldValue}}" />
+              </view>
+              <view wx:if="{{item.Title.length == 4}}" class="form-row-content off-set">                
+                <input disabled name="input" class="input font-value" placeholder="" value="{{item.FieldValue}}" />
+              </view>
+              <view wx:if="{{item.Title.length == 3}}" class="form-row-content off-set2">                
+                <input disabled name="input" class="input font-value" placeholder="" value="{{item.FieldValue}}" />
+              </view>
+              <view wx:if="{{item.Title.length < 3}}" class="form-row-content off-set3">
+                 <input disabled name="input" class="input font-value" placeholder="" value="{{item.FieldValue}}" />
+              </view>
+            </view>
+          </block>
+          <block wx:elif="{{ item.Type == 'textarea'}}" >            
+            <!-- <view class="page-section-title" style=" font-size: 34rpx;" >{{item.Title}}</view>
+            <view class="page-section-demo" >
+              <textarea disabled  maxlength="-1" auto-height ="true" name="textarea" placeholder=""  value="{{item.FieldValue}}" />  
+            </view> -->
+            <block wx:if="{{item.FieldValue.length <= 10}}"> 
+              <view class="form-row">
+                <view class="form-row-label">{{item.Title}}</view>
+                <view class="form-row-content off-set3">              
+                  <input disabled name="input" class="input font-value" placeholder="" value="{{item.FieldValue}}" />
+                </view>
+              </view>       
+            </block>   
+            <block  wx:elif="{{item.FieldValue.length > 10}}">    
+              <view class="page-section-title" style=" font-size: 34rpx;" >{{item.Title}}</view>
+              <view class="page-section-demo" >
+                <textarea disabled  class="font-value" maxlength="-1" auto-height ="true" name="textarea" placeholder=""  value="{{item.FieldValue}}" /> 
+              </view>
+            </block>   
+          </block>    
+      </view>
+    </block>  
+    <view class='line'></view>
+  </block>
+  <view class="page-section" style="display:{{display}};">
+   <!-- <form onSubmit="onSubmit" onReset="onReset"> -->
+      <view>      
+        <view class="form-row" style=" width: 200rpx; text-align: center">
+          <view class="form-row-label">审批内容</view>
+        </view>              
+        <view>
+          <textarea style="width:100%;min-height:80rpx;font-size:34rpx" name="title" auto-height maxlength="500" placeholder="请在此输入"  bindinput="onCommentBlur"></textarea>
+			</view>
+		</view>
+		<view class="page-section-btns" style="margin-top:20px">
+			<view><button bindtap="onRejectTap" type="ghost" size="mini" formType="submit">不同意</button></view>
+			<view><button style="background:#2F7DCD;" bindtap="onAgreeTap" type="primary" size="mini" formType="submit">同意</button></view>
+		</view>
+		<!--</form>-->
+</view>
+
+<view  class="page-section"> 
+    <view class="form-row">
+      <view class="form-row-label"></view>
+      <view  class="form-row-content off-set6">
+        <text style="color : #ef4136; font-weight:bold "  >以下是转发详情</text>
+      </view>
+    </view>   
+  </view>
+
+  <block wx:for="{{TransmitInfoData}}"  wx:for-item="TransmitInfo"  wx:key="Key">
+    <block wx:for="{{TransmitInfo}}" wx:key="key">
+      <view class="page-section">
+          <block  wx:if="{{item.Type == 'text' && item.Title !== '状态' && item.Title !== '备注'}}"> 
+            <view class="form-row">
+              <view class="form-row-label">{{item.Title}}</view>
+              <view wx:if="{{item.Title.length >= 5}}" class="form-row-content">                
+                <input disabled name="input" class="input font-value" placeholder="" value="{{item.FieldValue}}" />
+              </view>
+              <view wx:if="{{item.Title.length == 4}}" class="form-row-content off-set">                
+                <input disabled name="input" class="input font-value" placeholder="" value="{{item.FieldValue}}" />
+              </view>
+              <view wx:if="{{item.Title.length == 3}}" class="form-row-content off-set2">                
+                <input disabled name="input" class="input font-value" placeholder="" value="{{item.FieldValue}}" />
+              </view>
+              <view wx:if="{{item.Title.length < 3}}" class="form-row-content off-set3">
+                 <input disabled name="input" class="input font-value" placeholder="" value="{{item.FieldValue}}" />
+              </view>
+            </view>
+          </block>
+          <block wx:elif="{{ item.Type == 'textarea'}}" >            
+            <!-- <view class="page-section-title" style=" font-size: 34rpx;" >{{item.Title}}</view>
+            <view class="page-section-demo" >
+              <textarea disabled  maxlength="-1" auto-height ="true" name="textarea" placeholder=""  value="{{item.FieldValue}}" />  
+            </view> -->
+            <block wx:if="{{item.FieldValue.length <= 10}}"> 
+              <view class="form-row">
+                <view class="form-row-label">{{item.Title}}</view>
+                <view class="form-row-content off-set3">              
+                  <input disabled name="input" class="input font-value" placeholder="" value="{{item.FieldValue}}" />
+                </view>
+              </view>       
+            </block>   
+            <block  wx:elif="{{item.FieldValue.length > 10}}">    
+              <view class="page-section-title" style=" font-size: 34rpx;" >{{item.Title}}</view>
+              <view class="page-section-demo" >
+                <textarea disabled  class="font-value" maxlength="-1" auto-height ="true" name="textarea" placeholder=""  value="{{item.FieldValue}}" /> 
+              </view>
+            </block>   
+          </block>    
+      </view>
+    </block>  
+    <view class='line'></view>
+  </block>
+
+  <!--转发部分-->
+<view class="page-section" style="display:{{display}};">
+		<view>
+			<view class="form-row" style=" width: 140rpx; text-align: center">
+				<view class="form-row-label">接收人</view>
+			</view>
+			<view>
+				<textarea name="tranferPersons" auto-height disabled maxlength="-1" style="font-size:34rpx;position:relative; left:155rpx; top:-60rpx;" value="{{tranferPersons}}"></textarea>
+			</view>
+		</view>
+		<view>
+			<view class="form-row">
+				<view class="form-row-label page-section-btns">
+					<view bindtap='CleaerScanSpUser'>清除</view>
+				</view>
+				<view class="form-row-content">
+					<input style="width:420rpx" maxlength="20" placeholder="请输入姓名检索" value='{{spUser}}' bindinput="getSpUserValue" bindconfirm="scanSpUser" />
+				</view>
+				<icon style="display: flex;align-items: center;" size='18' type='search' bindtap='scanSpUser'></icon>
+			</view>
+		</view>
+
+  <view class="page-section">
+		<view>
+			<view class="form-row" wx:for='{{userArraylist}}' wx:key="key">
+				<view class="form-row-content" data-idx='{{index}}' value='{{inputVal[index]}}' bindinput='getInputVal'>
+					<scroll-view scroll-x style=" display: flex; white-space: nowrap;">
+						<view class="input font-value" style="width: 200rpx;display: inline-block; " bindtap='delSPUser' data-set='{{item}}' data-idx='{{index}}'>
+							{{inputVal[index]}}
+						</view>
+					</scroll-view>
+				</view>
+			</view>
+		</view>
+  </view>
+
+    <view>      
+        <view class="form-row" style=" width: 200rpx; text-align: center">
+          <view class="form-row-label">转发说明</view>
+        </view>              
+        <view>
+          <textarea style="width:100%;min-height:80rpx;font-size:34rpx" name="title" auto-height maxlength="50" placeholder="请在此输入"  bindinput="onNoteBlur"></textarea>
+			</view>
+		</view>
+  <view class="page-section-btns" style="margin-top:10px">		
+			<view><button style="background:#2F7DCD;" bindtap="onTransmitTap" type="primary" size="mini" formType="submit">转发</button></view>
+		</view>
+ 
+</view>
+
+    <!--回复转发部分-->
+  <view  class="page-section" style="display:{{replyDisplay}};"> 
+    <view>      
+        <view class="form-row" style=" width: 200rpx; text-align: center">
+          <view class="form-row-label">回复</view>
+        </view>              
+        <view>
+          <textarea style="width:100%;min-height:80rpx;font-size:34rpx" value="{{replycomment}}" name="title" auto-height maxlength="50" placeholder="请在此输入"  bindinput="onReplyBlur"></textarea>
+			</view>
+		</view>
+  <view class="page-section-btns" style="margin-top:10px">		
+			<view><button style="background:#2F7DCD;" bindtap="onReplyTap" type="primary" size="mini" formType="submit">保存</button></view>
+		</view>
+  </view>
+</view>

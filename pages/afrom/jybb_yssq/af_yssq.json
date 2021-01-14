@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText":"加盟网点证照/装修验收申请",
+  "usingComponents": {
+    "datepicker":  "/Componet/datePicker/datepicker",
+    "mp-toptips": "/Componet/toptips/toptips"  
+  }
+}

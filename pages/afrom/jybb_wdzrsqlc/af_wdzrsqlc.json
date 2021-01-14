@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText":"网点转让申请流程",
+  "usingComponents": {
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

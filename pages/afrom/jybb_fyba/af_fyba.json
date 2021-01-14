@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText":"新开网点费用备案",
+  "usingComponents": {
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

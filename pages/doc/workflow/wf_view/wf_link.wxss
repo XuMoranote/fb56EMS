@@ -1,0 +1,8 @@
+/* pages/doc/workflow/wf_view/wf_link.wxss */
+@import '/Template/list/index.wxss';
+
+.a-list .a-list-item .a-list-item-content {  
+    overflow: auto;
+    text-overflow: clip;
+    white-space:pre-wrap 
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "处理异常",
+  "usingComponents": { 
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

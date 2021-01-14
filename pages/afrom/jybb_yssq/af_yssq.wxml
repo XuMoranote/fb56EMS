@@ -1,0 +1,128 @@
+<!--pages/afrom/jybb_yssq/af_yssq.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}" delay="{{3000}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">申请人</view>
+			<view class="row-extra">{{formData.UserName}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">工号</view>
+			<view class="row-extra">{{formData.UserCode}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部</view>
+			<view class="row-extra">{{formData.szfb}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部编码</view>
+			<view class="row-extra">{{formData.szfbbm}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网点名称<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_wdmc" style="width:100%" maxlength="100" placeholder="请输入网点名称" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">网点代码<text style="color:red"></text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_wddm" style="width:100%" maxlength="100" placeholder="请输入网点代码" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<datepicker bind:bindMultiPickerChange="xtsxrqDatePicker" bind:bindCancel="bindCancel">
+			<view slot='row-content'>
+				<view class="row">
+					<view class="row-title">系统生效日期<text style="color:red">*</text></view>
+					<view class="row-extra">{{formData.xtsxrq}}</view>
+					<image class="row-arrow" src="/utils/icon/image/arrowright.png" />
+				</view>
+			</view>
+		</datepicker>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">印章主体<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input bindinput="input_yzzt" style="width:100%" value="飞豹物流集团有限公司" maxlength="100" placeholder="请输入印章主体" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<picker bindchange="bindPickerChange_yslx" value="{{yslx_index}}" range="{{yslx_array}}">
+			<view class="row">
+				<view class="row-title">验收类型<text style="color:red">*</text></view>
+				<view class="row-extra">{{yslx_array[yslx_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">入网是否缴纳保证金<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<radio-group bindchange="radiochange_rwsfjnbzj">
+					<radio value='是'>是</radio>
+					<radio value='否'>否</radio>
+				</radio-group>
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">是否涉及退款<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<radio-group bindchange="radiochange_sfsjtk">
+					<radio value='是'>是</radio>
+					<radio value='否'>否</radio>
+				</radio-group>
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">申请退款金额<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input type="number" bindinput="input_sqtkje" style="width:100%" maxlength="100" placeholder="请收入申请退款金额" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row-label" style="padding: 0 30rpx;">申请原因<text style="color:red">*</text></view>
+		<view class="page-section-demo">
+			<textarea bindinput="input_Reason" auto-height placeholder="申请原因" maxlength="500" />
+			</view>
+  </view> 
+  <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">附件<text style="color:red">*</text></view>
+        <view class="form-row-content">
+          <view class="page-section-btns">
+            <view bindtap="chooseImage">选择附件</view>
+            <view bindtap="onClearAttachTap">清除附件</view>
+          </view>
+        </view>
+      </view>
+      <view class="form-row" wx:for="{{formData.fileAttach}}" wx:key="key" >
+        <view class="form-row-label"></view>
+        <view class="form-row-content">      
+            <text>{{item.fileName}}</text>
+        </view>
+      </view>   
+    </view>
+ <button bindtap="onSubmit"
+   style="background:#2F7DCD;color: #fff;width:100%;line-height:150rpx;height:150rpx;text-align:center;" >提交验收申请</button>
+</view>

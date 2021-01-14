@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText":"退网申请",
+  "usingComponents": {
+    "datepicker":  "/Componet/datePicker/datepicker",
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

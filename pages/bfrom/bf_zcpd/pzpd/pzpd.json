@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "资产正常拍照盘点",
+  "usingComponents": { 
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

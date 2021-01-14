@@ -1,0 +1,33 @@
+<!--pages/doc/workflow/wf_view/wf_file.wxml-->
+<view class="page">
+	<block wx:for="{{stepInfoData}}" wx:for-item="stepInfo" wx:key="Key">
+		<block wx:for="{{stepInfo}}">
+			<view class="page-section">
+				<block wx:if="{{item.Type == 'text'}}">
+					<view class="form-row">
+						<view class="form-row-label">{{item.Title}}</view>
+						<view wx:if="{{item.Title.trim().length >= 5}}" class="form-row-content">
+							<input disabled name="input" class="input" placeholder="" value="{{item.FieldValue}}" />
+						</view>
+						<view wx:if="{{item.Title.trim().length == 4}}" class="form-row-content off-set">
+							<input disabled name="input" class="input" placeholder="" value="{{item.FieldValue}}" />
+						</view>
+						<view wx:if="{{item.Title.trim().length == 3}}" class="form-row-content off-set2">
+							<input disabled name="input" class="input" placeholder="" value="{{item.FieldValue}}" />
+						</view>
+						<view wx:if="{{item.Title.trim().length < 3}}" class="form-row-content off-set3">
+							<input disabled name="input" class="input" placeholder="" value="{{item.FieldValue}}" />
+						</view>
+					</view>
+				</block>
+				<block wx:elif="{{ item.Type == 'textarea'}}">
+					<view class="page-section-title" style=" font-size: 34rpx;">{{item.Title}}</view>
+					<view class="page-section-demo">
+						<textarea disabled maxlength="-1" auto-height="true" name="textarea" placeholder="" value="{{item.FieldValue}}" />
+						</view>
+          </block>    
+      </view>  
+    </block>  
+    <view class='line'></view>
+  </block>
+</view>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText":"特殊政策申请",
+  "usingComponents": {
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

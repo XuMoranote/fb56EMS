@@ -1,0 +1,29 @@
+<!--Template/list/index.wxml-->
+<template name="List">
+    <scroll-view style="overflow-y:scroll">
+       <view>
+            <view class="a-list">       
+                <block wx:if="{{header}}">
+                    <view class="a-list-header">{{header}}</view>          
+                </block>       
+                <view wx:if="{{data}}" class="a-list-items">
+                    <block wx:for="{{data}}"  wx:for-index="itemIndex" wx:key="Key">
+                     <view class="a-list-item {{index !== (data.length - 1) ? '': 'last'}} am-list-item-{{item.align || 'middle'}}" 
+                     hover-class="a-list-item-hover" bindtap="{{onItemTap}}" data-index="{{index}}" data-id ="{{item.id}}">
+                            <view class="a-list-item-line {{item.textMode ? 'a-list-item-line-' + item.textMode : ''}}">
+                                <image wx:if="{{item.thumb}}" class="a-list-item-thumb" src="{{item.thumb}}" mode="scaleToFill" />
+                                <text class="a-list-item-content">{{item.title}}</text>
+                                <view wx:if="{{item.extra}}" class="a-list-item-extra" >{{item.extra}}</view>
+                                <view wx:if="{{item.arrow}}" class="a-list-arrow a-list-arrow-{{item.arrow}}" >
+                                <!--<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />-->
+                                </view>
+                                <view class="a-list-item-bottom" />
+                            </view>
+                        </view> 
+                    </block>
+                </view>  
+            </view>
+        </view>
+    </scroll-view>
+</template>
+<!---->

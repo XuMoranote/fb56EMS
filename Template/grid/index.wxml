@@ -1,0 +1,35 @@
+<!--Template/grid/index.wxml-->
+<template name="gridItem">
+	<view class='services'>
+		<view class="grid" wx:for="{{serversData}}" wx:key="key">
+			<view class='grid-items'>
+				<block wx:for="{{item.items}}" wx:key="key">
+					<!-- <view class='grid-item'> -->
+					<view class="{{item.disabled ==true?'grid-item66':'grid-item'}}">
+						<!--提醒红色小角标-->
+						<view wx:if="{{(!item.disabled && item.warnNum > 0 )}}">
+							<view class="span_position">{{item.warnNum}}</view>
+						</view>
+						<view wx:if="{{item.disabled}}" hidden="{{item.disabled}}" style="background:rgba(0, 0, 0, 0.068)" class='navigator'
+							data-path='{{item.url}}'  bindtap='bindNavigator' hover-class="none">					 
+							<view class='item-content'>
+								<view class="item-content-icon">
+									<image src="{{item.icon}}" mode="scaleToFill" />
+								</view>
+								<text class="weui-grid_label">{{item.name}}</text>
+							</view>
+						</view>
+						<view wx:else class='navigator' data-path='{{item.url}}' bindtap='bindNavigator' hover-class="none">
+							<view class='item-content'>
+								<view class="item-content-icon">
+									<image src="{{item.icon}}" mode="scaleToFill" />
+								</view>
+								<text class="weui-grid_label">{{item.name}}</text>
+							</view>
+						</view>
+					</view>
+				</block>
+			</view>
+		</view>
+	</view>
+</template>

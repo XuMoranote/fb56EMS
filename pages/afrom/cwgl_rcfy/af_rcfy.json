@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText":"日常费用申请",
+  "usingComponents": {
+    "mp-toptips": "/Componet/toptips/toptips",
+    "etable" : "/Componet/tabel/etable/etable"
+  }
+}

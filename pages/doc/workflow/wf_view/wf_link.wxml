@@ -1,0 +1,30 @@
+<!--pages/doc/workflow/wf_view/wf_link.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<view class="page-section">
+		<view class="page-section-title"></view>
+		<view>
+			<scroll-view scroll-y>
+				<view>
+					<view class="a-list">
+						<view wx:if="{{linkData.data}}" class="a-list-items">
+							<block wx:for="{{linkData.data}}">
+								<view class="a-list-item {{index !== (linkData.data.length - 1) ? '': 'last'}} am-list-item-{{item.align || 'middle'}}" hover-class="a-list-item-hover" data-index="{{index}}" data-id="{{item.id}}">
+									<view class="a-list-item-line {{item.textMode ? 'a-list-item-line-' + item.textMode : ''}}">
+										<text class="a-list-item-content">{{item.title}}
+										<!-- <block wx:for="{item.extra}}" wx:for-item="attach">\n附件：
+											<text style="color:blue;font-size:18px" data-AttachKey ="{{attach.AttachKey}}"  data-AttachName ="{{attach.AttachName}}" data-UpBucketName ="{{attach.UpBucketName}}"   bindtap="previewImage" >{{attach.AttachName}}</text>
+										</block> -->
+										</text>
+										<view class="a-list-item-bottom" />
+									</view>
+								</view>
+							</block>
+						</view>
+					</view>
+				</view>
+			</scroll-view>
+		</view>
+	</view>
+</view>

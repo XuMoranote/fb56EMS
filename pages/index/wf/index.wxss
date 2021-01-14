@@ -1,0 +1,22 @@
+/* pages/index/wf/index.wxss */
+@import '/Template/grid/index.wxss';
+.btn1 {
+  width:720rpx;
+  margin-top: 30rpx;
+  background-color:white;
+  border-radius: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  box-shadow: 0 0 5px rgba(0,0,0,0.27);
+}
+.btnImg {
+  margin-right: 8rpx;
+  width: 46rpx;
+  height: 46rpx;
+}
+.btn1::after {
+  border-radius: 98rpx;
+  border: 0; 
+}

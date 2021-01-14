@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "请假申请",
+  "usingComponents": {
+    "datepicker":  "/Componet/datePicker/datepicker",
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

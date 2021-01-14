@@ -1,0 +1,131 @@
+<!--pages/afrom/rlzy_ccsq/af_ccsq.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">申请人</view>
+			<view class="row-extra">{{formData.UserName}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">工号</view>
+			<view class="row-extra">{{formData.UserCode}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部</view>
+			<view class="row-extra">{{formData.szfb}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部编码</view>
+			<view class="row-extra">{{formData.szfbbm}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row-label" style="padding: 0 30rpx;">出差事由<text style="color:red">*</text></view>
+		<view class="page-section-demo">
+			<textarea bindinput="input_Reason" auto-height placeholder="出差事由" maxlength="500" />
+			</view>
+  </view>
+	<view class="page-section">
+   	<view class="form-row">
+		<view class="form-row-label" style="font-weight: bold">同行人员</view>
+		<view class="form-row-content" style="width:100%">
+				<input style="width:70%；border-bottom:1px solid #ddd;" bindinput="input_user" bindconfirm="searchUser" value="{{input_user}}" maxlength="100" placeholder="检索工号/姓名" />
+			</view>
+			<icon style="display: flex;align-items: center;" size='18' type='search' bindtap='searchUser'></icon>
+	</view>
+		<view class="form-row" wx:for='{{userArraylist}}' wx:key="key">
+			<view class="form-row-content" data-idx='{{index}}' value='{{inputVal[index]}}'>
+				<scroll-view scroll-x style=" display: flex; white-space: nowrap;">
+					<view class="input font-value" style="width: 200rpx;display: inline-block; " bindtap='delSPUser' data-set='{{item}}' data-idx='{{index}}'>
+						{{inputVal[index]}}
+					</view>
+				</scroll-view>
+			</view>
+		</view>
+		<scroll-view scroll-x style="width: 100%; display: flex; white-space: nowrap;">
+		<view style='font-size: 32rpx;width:1500rpx'>
+		 <etable config="{{txrTabel}}" bind:myget='deleteRowtxr'/>
+		</view>
+		</scroll-view>
+  </view>
+	<view class="page-section">
+   		<view class="form-row">
+			<view class="form-row-label" style="font-weight: bold" >出差行程</view>
+		</view>
+    <datepicker dateType='date' bind:bindMultiPickerChange="startDatePicker" bind:bindCancel="bindCancel">
+			<view slot='row-content'>
+				<view class="row">
+					<view class="row-title">选择出发日期<text style="color:red">*</text></view>
+					<view class="row-extra">{{startDate}}</view>
+					<image class="row-arrow" src="/utils/icon/image/arrowright.png" />
+				</view>
+			</view>
+		</datepicker>
+    <datepicker dateType='date' bind:bindMultiPickerChange="endDatePicker" bind:bindCancel="bindCancel">
+			<view slot='row-content'>
+				<view class="row">
+					<view class="row-title">选择结束日期<text style="color:red">*</text></view>
+					<view class="row-extra">{{endDate}}</view>
+					<image class="row-arrow" src="/utils/icon/image/arrowright.png" />
+				</view>
+			</view>
+		</datepicker>
+    <view class="form-row">
+			<view class="form-row-label">出发城市<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input value="{{cfcs}}" style="width:100%" bindinput="input_cfcs" maxlength="100" placeholder="请输入出发城市" />
+			</view>
+		</view>
+    <view class="form-row">
+			<view class="form-row-label">目的城市<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input  value="{{mdcs}}" style="width:100%" bindinput="input_mdcs" maxlength="100" placeholder="请输入目的城市" />
+			</view>
+    </view>
+ 
+		<view class="form-row">
+			<view class="form-row-label">是否返程<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<radio-group bindchange="radiochange">
+					<radio value='true'>是</radio>
+					<radio value='false'>否</radio>
+				</radio-group>
+			</view>
+		</view>
+ 
+    <view class="form-row"  bindtap="addCCXC">
+    <view class="form-row-label" style="background:#fff;color:#2F7DCD ;width:100%;text-align:center;">添加出差行程</view>    
+    </view>
+		<scroll-view scroll-x style="width: 100%; display: flex; white-space: nowrap;">
+		  <view style='font-size: 32rpx;width:1500rpx'>
+		    <etable config="{{ccxcTabel}}" bind:myget='deleteRowccxc'/>
+		  </view>
+		</scroll-view>
+  </view>
+  <view class="page-section">
+   <view class="form-row">
+    <view class="form-row-label">附件<text style="color:red">*</text></view>
+     <view class="form-row-content">
+       <view class="page-section-btns">
+         <view bindtap="chooseImage">选择附件</view>
+         <view bindtap="onClearAttachTap">清除附件</view>
+       </view>
+     </view>
+     </view>
+    <view class="form-row" wx:for="{{formData.fileAttach}}" wx:key="key" >
+      <view class="form-row-label"></view>
+      <view class="form-row-content">      
+        <text>{{item.fileName}}</text>
+      </view>
+    </view>   
+  </view>
+ <button bindtap="onSubmit"
+   style="background:#2F7DCD;color: #fff;width:100%;line-height:150rpx;height:150rpx;text-align:center;" >提交出差申请</button>
+</view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "公文流转",
+  "usingComponents": {
+    "select": "/Componet/select/select",
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

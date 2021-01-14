@@ -1,0 +1,16 @@
+<template name="Collapse">
+	<view class="a-collapse">
+		<view wx:for="{{panels}}" wx:key="Key">
+			<view class="a-collapse-title" bindtap="{{onTitleTap}}" data-index="{{index}}">
+				<view class="collapse-title">{{item.title}}</view>
+				<view class="{{item.expanded ? 'a-collapse-title-arrow a-collapse-title-arrow-up' : 'a-collapse-title-arrow'}}" />
+			</view>
+			<view class="a-collapse-content" wx:if="{{item.expanded}}">
+				{{item.content}}
+				<view class="a-collapse-content" wx:for="{{item.transferFileData}}" wx:key="key">
+					<text style="color:blue" data-AttachKey ="{{item.AttachKey}}"  data-AttachName ="{{item.AttachName}}" bindtap="{{previewTranfserImageTap}}">{{item.AttachName}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText":"网点交接件时间维护申请",
+  "usingComponents": {
+    "timepicker": "/Componet/datePicker/timepicker",
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

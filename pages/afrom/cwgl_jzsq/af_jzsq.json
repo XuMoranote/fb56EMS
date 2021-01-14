@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText":"借支申请",
+  "usingComponents": {
+    "mp-toptips": "/Componet/toptips/toptips"
+  }
+}

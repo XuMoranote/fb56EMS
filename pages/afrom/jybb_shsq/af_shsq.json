@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText":"网络招商会申请",
+  "usingComponents": {
+    "select": "/Componet/select/dselect/dxs",
+    "datepicker":  "/Componet/datePicker/datepicker",
+    "mp-toptips": "/Componet/toptips/toptips"  
+    
+  }
+}

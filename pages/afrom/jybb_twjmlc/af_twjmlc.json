@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText":"退网减免流程",
+  "usingComponents": {
+    "mp-toptips": "/Componet/toptips/toptips",
+    "etable" : "/Componet/tabel/etable/etable"
+  }
+}

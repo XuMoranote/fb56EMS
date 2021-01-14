@@ -1,0 +1,128 @@
+<!--pages/afrom/jybb_pzsq/af_pzsq.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}" delay="{{3000}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<view class="page">
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">申请人</view>
+			<view class="row-extra">{{formData.UserName}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="row">
+			<view class="row-title">工号</view>
+			<view class="row-extra">{{formData.UserCode}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部</view>
+			<view class="row-extra">{{formData.szfb}}</view>
+		</view>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="row-title">所在分部编码</view>
+			<view class="row-extra">{{formData.szfbbm}}</view>
+		</view>
+	</view>
+
+	<view class="page-section">
+		<picker bindchange="bindPickerChange_tzjglx" value="{{tzjglx_index}}" range="{{tzjglx_array}}">
+			<view class="row">
+				<view class="row-title">调整价格类型<text style="color:red">*</text></view>
+				<view class="row-extra">{{tzjglx_array[tzjglx_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+	<view class="page-section" hidden="{{tzjglx2_hidden}}">
+		<picker bindchange="bindPickerChange_tzjglx2" value="{{tzjglx2_index}}" range="{{tzjglx2_array}}">
+			<view class="row">
+				<view class="row-title">调整价格二级类型<text style="color:red">*</text></view>
+				<view class="row-extra">{{tzjglx2_array[tzjglx2_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+	<view class="page-section">
+		<view class="form-row">
+			<view class="form-row-label">以上月货量测算收入变化<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<input type="number" bindinput="input_ysyhlcssrbh" style="width:100%" maxlength="100" 
+				placeholder="请输入以上月货量测算收入变化" />
+			</view>
+		</view>
+	</view>
+	<view class="page-section" hidden="{{tzfyx_hidden}}">
+		<view class="form-row">
+			<view class="form-row-label">调整费用项(多选)<text style="color:red">*</text></view>
+			<view class="form-row-content" style="width:100%">
+				<select id='myComponent' style="display: flex;align-items: center;width:100%" prop-array='{{selectArray}}' bind:myget='selectGetData'></select>
+			</view>
+		</view>
+	</view>
+	<view class="page-section" hidden="{{sqlx_hidden}}">
+		<picker bindchange="bindPickerChange_sqlx" value="{{sqlx_index}}" range="{{sqlx_array}}">
+			<view class="row">
+				<view class="row-title">申请类型：<text style="color:red">*</text></view>
+				<view class="row-extra">{{sqlx_array[sqlx_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+	<view class="page-section" hidden="{{tjfs_hidden}}">
+		<picker bindchange="bindPickerChange_tjfs" value="{{tjfs_index}}" range="{{tjfs_array}}">
+			<view class="row">
+				<view class="row-title">调价方式：<text style="color:red">*</text></view>
+				<view class="row-extra">{{tjfs_array[tjfs_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+	<view class="page-section">
+		<picker bindchange="bindPickerChange_tjfw" value="{{tjfw_index}}" range="{{tjfw_array}}">
+			<view class="row">
+				<view class="row-title">调价范围<text style="color:red">*</text></view>
+				<view class="row-extra">{{tjfw_array[tjfw_index]}}</view>
+				<image class="row-arrow" src="/utils/icon/image/arrowright.png" mode="aspectFill" />
+			</view>
+		</picker>
+	</view>
+	<view class="page-section">
+		<datepicker bind:bindMultiPickerChange="sxrqDatePicker" bind:bindCancel="bindCancel">
+			<view slot='row-content'>
+				<view class="row">
+					<view class="row-title">生效日期<text style="color:red">*</text></view>
+					<view class="row-extra">{{formData.sxrq}}</view>
+					<image class="row-arrow" src="/utils/icon/image/arrowright.png" />
+				</view>
+			</view>
+		</datepicker>
+	</view>
+	<view class="page-section">
+		<view class="form-row-label" style="padding: 0 30rpx;">申请原因<text style="color:red">*</text></view>
+		<view class="page-section-demo">
+			<textarea bindinput="input_Reason" auto-height placeholder="申请原因" maxlength="500" />
+			</view>
+  </view> 
+  <view class="page-section">
+      <view class="form-row">
+        <view class="form-row-label">附件<text style="color:red">*</text></view>
+        <view class="form-row-content">
+          <view class="page-section-btns">
+            <view bindtap="chooseImage">选择附件</view>
+            <view bindtap="onClearAttachTap">清除附件</view>
+          </view>
+        </view>
+      </view>
+      <view class="form-row" wx:for="{{formData.fileAttach}}" wx:key="key" >
+        <view class="form-row-label"></view>
+        <view class="form-row-content">      
+            <text>{{item.fileName}}</text>
+        </view>
+      </view>   
+    </view>
+ <button bindtap="onSubmit"
+   style="background:#2F7DCD;color: #fff;width:100%;line-height:150rpx;height:150rpx;text-align:center;" >提交价格配置申请</button>
+</view>

@@ -1,0 +1,22 @@
+<!--pages/index/us/Set/set.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<mp-toptips msg="{{success}}" type="success" show="{{success}}"></mp-toptips>
+<import src="/Template/list/index.wxml" />
+<view class="page">
+  <view class="page-section">
+    <view style="display: flex;align-items: center;min-height: 88rpx;padding-left: 30rpx">
+      <image style="width:44rpx;height:44rpx;margin-right:30rpx;" src="/utils/icon/image/biz_list.png"
+        mode="scaleToFill" />
+      <text
+        style="flex:1;font-size:.98rem;line-height:1.5;width: auto; padding-top: .14rem;padding-bottom: .14rem;">消息通知</text>
+      <view>
+        <switch checked="{{IsMessageTell}}" bindchange="switchChange" />
+      </view>
+    </view>
+  </view>
+  
+  <view class="page-section">
+    <template is="List" data="{{...personalList}}" />
+  </view>
+
+</view>
